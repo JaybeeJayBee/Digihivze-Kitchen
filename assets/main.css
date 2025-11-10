@@ -1,1 +1,291 @@
+/* --- Brand Colors & Variables --- */
+:root {
+    --color-primary-dark: #6b4226; /* Dark Brown */
+    --color-secondary-light: #d4a373; /* Mid-Tone Tan */
+    --color-accent-cream: #f8edeb; /* Light Cream/Off-White */
+    --color-text-dark: #333;
+    --color-text-light: #fff;
+    --nav-icon-size: 50px;
+    --spacing-lg: 3rem;
+}
 
+/* --- Global Reset & Typography --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    color: var(--color-text-dark);
+    line-height: 1.6;
+    background-color: var(--color-accent-cream);
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-primary-dark);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--color-secondary-light);
+}
+
+/* --- MAIN Content Styling (High-Value Look) --- */
+#page-content {
+    min-height: 80vh; /* Ensures footer is below the fold initially */
+    padding: var(--spacing-lg) 5vw;
+    text-align: center;
+}
+
+.hero-section {
+    padding: 6rem 0;
+}
+
+.agency-title {
+    font-size: 3.5rem;
+    color: var(--color-primary-dark);
+    margin-bottom: 0.5rem;
+}
+
+.agency-tagline {
+    font-size: 1.3rem;
+    color: var(--color-secondary-light);
+    margin-bottom: 2rem;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    background-color: var(--color-primary-dark);
+    color: var(--color-text-light);
+    border-radius: 5px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: var(--color-secondary-light);
+    color: var(--color-primary-dark);
+}
+
+.content-section {
+    padding: 4rem 0;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: left;
+}
+.content-section h2 {
+    color: var(--color-primary-dark);
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    text-align: center;
+}
+
+
+/* --- 2A. FLOATING NAV ICON (Trigger) --- */
+#floating-nav-icon {
+    position: fixed;
+    top: 25px; /* Offset from the edge */
+    right: 25px; /* Offset from the edge */
+    width: var(--nav-icon-size);
+    height: var(--nav-icon-size);
+    background-color: var(--color-secondary-light);
+    color: var(--color-text-light);
+    border: none;
+    border-radius: 50%; /* Circular button */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1001; /* Above everything */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+.chef-heart-icon {
+    font-size: 1.5rem; /* Sizing the chef hat icon */
+}
+
+/* Visibility Control: Hide/Show on Scroll Up/Down */
+#floating-nav-icon.hidden {
+    opacity: 0;
+    transform: translateY(-20px);
+    pointer-events: none; /* Make sure it's not clickable when hidden */
+}
+
+/* --- 2B. NAVIGATION MENU (Overlay) --- */
+.nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(107, 66, 38, 0.98); /* Primary dark with slight transparency */
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    /* Initial Hidden State (Slide Animation) */
+    transform: translateX(100%);
+    transition: transform 0.5s ease-in-out;
+}
+
+.nav-overlay.open {
+    transform: translateX(0); /* Final Visible State */
+}
+
+/* Close Button (X) */
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    font-size: 3rem;
+    background: none;
+    border: none;
+    color: var(--color-accent-cream);
+    cursor: pointer;
+    opacity: 1;
+    transition: opacity 0.3s;
+}
+
+.close-btn:hover {
+    opacity: 0.7;
+}
+
+/* Menu Links */
+.overlay-menu ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+.overlay-menu li {
+    margin: 1.5rem 0;
+}
+
+.overlay-menu a {
+    color: var(--color-text-light);
+    font-size: 2.5rem;
+    font-weight: 300;
+    display: inline-block;
+    padding: 0.5rem 0;
+    letter-spacing: 2px;
+    transition: color 0.3s, border-bottom 0.3s;
+}
+
+.overlay-menu a:hover {
+    color: var(--color-secondary-light);
+    border-bottom: 2px solid var(--color-secondary-light);
+}
+
+.overlay-tagline {
+    margin-top: 3rem;
+    color: var(--color-secondary-light);
+    font-style: italic;
+    font-size: 1.1rem;
+}
+
+
+/* --- 3. STANDARDIZED FOOTER COMPONENT --- */
+#global-footer {
+    background-color: var(--color-primary-dark); /* Distinct dark background */
+    color: var(--color-text-light);
+    padding: var(--spacing-lg) 5vw 1rem;
+    font-size: 0.95rem;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem; /* Spacing between columns */
+    max-width: 1200px;
+    margin: 0 auto 1.5rem;
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+}
+
+.footer-col {
+    flex: 1;
+    min-width: 180px; /* Ensures readability on small columns */
+}
+
+.footer-identity h3 {
+    color: var(--color-secondary-light);
+    margin-bottom: 0.5rem;
+    font-size: 1.4rem;
+}
+
+.footer-col h4 {
+    margin-bottom: 1rem;
+    color: var(--color-secondary-light);
+    font-weight: 600;
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-col li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-col a {
+    color: var(--color-accent-cream);
+}
+
+.footer-col a:hover {
+    color: var(--color-secondary-light);
+}
+
+.social-links a {
+    display: inline-block;
+    margin-right: 10px;
+    font-weight: bold;
+    border: 1px solid var(--color-accent-cream);
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 28px;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+
+.social-links a:hover {
+    background-color: var(--color-secondary-light);
+    color: var(--color-primary-dark);
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 1rem;
+    text-align: center;
+    font-size: 0.85rem;
+}
+
+/* --- Responsiveness: Mobile (Standardized Footer) --- */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    .footer-col {
+        min-width: 100%;
+        text-align: center;
+    }
+    .footer-col h4 {
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+    .footer-identity {
+        order: -1; /* Puts agency identity first */
+    }
+    .social-links {
+        margin-top: 1rem;
+    }
+}
