@@ -8,7 +8,9 @@
     --nav-icon-size: 50px;
     --spacing-lg: 3rem;
     /* Chocolate Swirl Color: Tan color with high transparency */
-    --color-swirl-particle: rgba(212, 163, 115, 0.25); 
+    --color-swirl-particle: rgba(212, 163, 115, 0.35); /* SLIGHTLY MORE VISIBLE */
+    /* Define the color for the glow on interaction */
+    --color-interaction-glow: rgba(248, 237, 235, 0.5); 
 }
 
 /* --- CRITICAL GLOBAL RESET (Fixes bottom spacing) --- */
@@ -157,7 +159,7 @@ a:hover {
     transform: translateX(0); 
 }
 
-/* Close Button (X) */
+/* Close Button (X) - NEW GLOW INTERACTION FIX */
 .close-btn {
     position: absolute;
     top: 20px;
@@ -165,15 +167,21 @@ a:hover {
     font-size: 3rem; 
     background: none;
     border: none;
-    color: var(--color-secondary-light); /* Accent color for the X */
+    color: var(--color-secondary-light);
     cursor: pointer;
     opacity: 1;
-    transition: transform 0.3s, opacity 0.3s;
+    transition: transform 0.3s, opacity 0.3s, color 0.1s, text-shadow 0.1s; /* Added transitions */
 }
 
 .close-btn:hover {
     color: var(--color-accent-cream);
-    transform: rotate(90deg); /* Subtle wow effect on hover */
+    transform: rotate(90deg);
+}
+/* Crucial Fix: Apply glow when button is clicked (active) */
+.close-btn:active {
+    color: var(--color-accent-cream);
+    text-shadow: 0 0 10px var(--color-interaction-glow); 
+    transform: rotate(90deg) scale(1.05); /* Adds a small press feedback */
 }
 
 /* Menu Links */
@@ -189,11 +197,11 @@ a:hover {
 
 .overlay-menu a {
     color: var(--color-text-light);
-    font-size: 1.8rem; /* Reduced font size (Wowing, yet perfectly readable) */
+    font-size: 1.8rem; 
     font-weight: 700; 
     display: inline-block;
     padding: 0.5rem 0;
-    letter-spacing: 2px; /* Reduced spacing */
+    letter-spacing: 2px; 
     text-transform: uppercase;
     position: relative;
     transition: color 0.3s, text-shadow 0.3s; 
@@ -205,15 +213,18 @@ a:hover {
     display: none; 
 }
 
+/* Target current link and hover state */
 .overlay-menu a:hover,
-.overlay-menu a[href="index.html"] { 
+.overlay-menu a[href$="index.html"] { 
     color: var(--color-secondary-light);
     text-shadow: 0 0 10px var(--color-secondary-light); 
 }
-
-.overlay-menu a:hover::after {
-    width: 0; 
+/* Removing potential conflicting active styles */
+.overlay-menu a:active, .overlay-menu a:focus {
+    color: var(--color-secondary-light); 
+    text-shadow: 0 0 10px var(--color-secondary-light); 
 }
+
 
 .overlay-tagline {
     margin-top: 2.5rem; 
@@ -223,7 +234,7 @@ a:hover {
     opacity: 0.7;
 }
 
-/* --- FINAL FIX: SLOW-DRIFTING CHOCOLATE/COFFEE SWIRLS --- */
+/* --- ANIMATION: SLOW-DRIFTING CHOCOLATE/COFFEE SWIRLS (Enhanced Visibility) --- */
 
 .steam-background {
     position: absolute;
@@ -247,7 +258,7 @@ a:hover {
     bottom: -150px;
     animation: animateSwirl 60s linear infinite; /* Very slow, gentle drift */
     opacity: 0;
-    filter: blur(4px); /* High blur for soft, liquid look */
+    filter: blur(5px); /* INCREASED blur for a softer, liquid look */
 }
 
 /* Define staggered animation delays and sizes */
@@ -283,10 +294,9 @@ a:hover {
         opacity: 0;
     }
     30% {
-        opacity: 0.8; /* Fully visible mid-rise */
+        opacity: 0.9; /* INCREASED opacity mid-rise */
     }
     100% {
-        /* Rise, drift horizontally, and rotate very slowly */
         transform: translateY(-100vh) translateX(50px) rotate(360deg); 
         opacity: 0; /* Fade out at the top */
     }
