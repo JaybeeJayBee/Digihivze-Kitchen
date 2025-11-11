@@ -7,6 +7,7 @@
     --color-text-light: #fff;
     --nav-icon-size: 50px;
     --spacing-lg: 3rem;
+    --color-flame-subtle: rgba(255, 140, 0, 0.1); /* Subtle, faint orange for heat */
 }
 
 /* --- CRITICAL GLOBAL RESET (Fixes bottom spacing) --- */
@@ -228,7 +229,7 @@ a:hover {
     opacity: 0.7;
 }
 
-/* --- WOW EFFECT: THEME BACKGROUND (SUBTLE STEAM) --- */
+/* --- WOW EFFECT: THEME BACKGROUND (SUBTLE FLAME/HEAT) --- */
 
 .steam-background {
     position: absolute;
@@ -246,78 +247,81 @@ a:hover {
     display: block;
     list-style: none;
     width: 25px;
-    height: 25px;
-    background: rgba(255, 255, 255, 0.05); /* Very light, subtle white/cream */
+    height: 50px; /* Taller shape for a flicker/heat streak */
+    /* Use subtle orange/amber tint */
+    background: var(--color-flame-subtle); 
     bottom: -150px;
-    animation: animateSteam 25s linear infinite;
+    animation: animateFlame 25s linear infinite;
     opacity: 0;
-    border-radius: 50%; /* Circles for a soft, steam-like appearance */
+    /* Flatter bottom, slightly rounded top */
+    border-radius: 50% 50% 10% 10%; 
+    filter: blur(1px); /* Slight blur for atmospheric heat */
 }
 
 /* Define staggered animation delays and sizes for a natural look */
 .steam-background div:nth-child(1) {
     left: 25%;
-    width: 80px;
+    width: 40px;
     height: 80px;
     animation-delay: 0s;
 }
 .steam-background div:nth-child(2) {
     left: 10%;
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 30px;
     animation-delay: 2s;
     animation-duration: 12s;
 }
 .steam-background div:nth-child(3) {
     left: 70%;
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 30px;
     animation-delay: 4s;
 }
 .steam-background div:nth-child(4) {
     left: 40%;
-    width: 60px;
+    width: 30px;
     height: 60px;
     animation-delay: 0s;
     animation-duration: 18s;
 }
 .steam-background div:nth-child(5) {
     left: 65%;
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 30px;
     animation-delay: 0s;
 }
 .steam-background div:nth-child(6) {
     left: 75%;
-    width: 110px;
-    height: 110px;
+    width: 50px;
+    height: 100px;
     animation-delay: 3s;
 }
 .steam-background div:nth-child(7) {
     left: 35%;
-    width: 150px;
-    height: 150px;
+    width: 70px;
+    height: 140px;
     animation-delay: 7s;
 }
 .steam-background div:nth-child(8) {
     left: 50%;
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 40px;
     animation-delay: 15s;
     animation-duration: 45s;
 }
 
-/* Keyframe definition for the rising steam effect */
-@keyframes animateSteam {
+/* Keyframe definition for the rising flame/heat effect */
+@keyframes animateFlame {
     0% {
-        transform: translateY(0) rotate(0deg);
+        transform: translateY(0) scaleX(1);
         opacity: 0;
     }
     50% {
-        opacity: 1; /* Fade in as it rises */
+        opacity: 0.6; /* Slightly higher opacity for a visual 'flicker' feel */
     }
     100% {
-        transform: translateY(-1000px) rotate(360deg);
+        transform: translateY(-1000px) scaleX(1.2); /* Slight scale change as it rises */
         opacity: 0; /* Fade out at the top */
     }
 }
