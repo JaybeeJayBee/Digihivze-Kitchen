@@ -7,10 +7,9 @@
     --color-text-light: #fff;
     --nav-icon-size: 50px;
     --spacing-lg: 3rem;
-    /* Chocolate Swirl Color: Tan color with high transparency */
-    --color-swirl-particle: rgba(212, 163, 115, 0.35); /* SLIGHTLY MORE VISIBLE */
-    /* Define the color for the glow on interaction */
-    --color-interaction-glow: rgba(248, 237, 235, 0.5); 
+    --color-swirl-particle: rgba(212, 163, 115, 0.35); /* Swirl Color */
+    /* Define a slightly richer pulse color */
+    --color-pulse-darker: #5a381e; /* A slightly darker brown/honey */
 }
 
 /* --- CRITICAL GLOBAL RESET (Fixes bottom spacing) --- */
@@ -142,17 +141,30 @@ a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    /* Darker overlay for high contrast */
-    background-color: var(--color-primary-dark); 
+    /* Static background color removed, replaced by animation below */
+    background-color: var(--color-primary-dark);
     z-index: 1000;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
+    /* Apply pulsing animation */
+    animation: backgroundPulse 15s ease-in-out infinite alternate; 
+
     /* Initial Hidden State (Slide Animation) */
     transform: translateX(100%);
     transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1); /* Slicker transition */
+}
+
+/* Keyframe for soft color pulsing */
+@keyframes backgroundPulse {
+    0% {
+        background-color: var(--color-primary-dark); /* Start dark brown */
+    }
+    100% {
+        background-color: var(--color-pulse-darker); /* End slightly darker/richer brown */
+    }
 }
 
 .nav-overlay.open {
@@ -213,18 +225,15 @@ a:hover {
     display: none; 
 }
 
-/* Target current link and hover state */
 .overlay-menu a:hover,
 .overlay-menu a[href$="index.html"] { 
     color: var(--color-secondary-light);
     text-shadow: 0 0 10px var(--color-secondary-light); 
 }
-/* Removing potential conflicting active styles */
-.overlay-menu a:active, .overlay-menu a:focus {
-    color: var(--color-secondary-light); 
-    text-shadow: 0 0 10px var(--color-secondary-light); 
-}
 
+.overlay-menu a:hover::after {
+    width: 0; 
+}
 
 .overlay-tagline {
     margin-top: 2.5rem; 
@@ -234,7 +243,7 @@ a:hover {
     opacity: 0.7;
 }
 
-/* --- ANIMATION: SLOW-DRIFTING CHOCOLATE/COFFEE SWIRLS (Enhanced Visibility) --- */
+/* --- ANIMATION: SLOW-DRIFTING CHOCOLATE/COFFEE SWIRLS --- */
 
 .steam-background {
     position: absolute;
@@ -294,9 +303,10 @@ a:hover {
         opacity: 0;
     }
     30% {
-        opacity: 0.9; /* INCREASED opacity mid-rise */
+        opacity: 0.9; /* Fully visible mid-rise */
     }
     100% {
+        /* Rise, drift horizontally, and rotate very slowly */
         transform: translateY(-100vh) translateX(50px) rotate(360deg); 
         opacity: 0; /* Fade out at the top */
     }
