@@ -3,34 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Food & Recipe Agency</title>
+    <title>Digihivze - Crafting Delicious Digital Experiences</title>
 
-    <link rel="icon" type="image/webp" href="https://i.ibb.co/jP5gg2HT/IMG-20250819-143112-516.webp">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
     <link rel="stylesheet" href="assets/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="icon" type="image/webp" href="https://i.ibb.co/jP5gg2HT/IMG-20250819-143112-516.webp">
 </head>
 <body>
 
     <div id="nav-system-placeholder"></div>
 
+    <header class="welcome-header">
+        <div class="floating-shapes">
+            <div class="shape" style="width: 120px; height: 120px; top: 15%; left: 10%; animation-delay: 0s;"></div>
+            <div class="shape" style="width: 80px; height: 80px; top: 70%; left: 80%; animation-delay: 3s;"></div>
+            <div class="shape" style="width: 160px; height: 160px; top: 60%; left: 15%; animation-delay: 6s;"></div>
+            <div class="shape" style="width: 60px; height: 60px; top: 20%; left: 85%; animation-delay: 9s;"></div>
+        </div>
+        <div class="header-content">
+            <h1 class="welcome-title">Welcome to Digihivze</h1>
+            <p class="welcome-subtitle">Crafting delicious digital experiences with artisanal care</p>
+        </div>
+    </header>
+    
     <main id="page-content">
-        <section class="hero-section">
-            <h1 class="agency-title">Crafting Culinary Excellence. Simplified.</h1>
-            <p class="agency-tagline">Your source for premium recipes and professional food insights. Focus on flavor, we handle the rest.</p>
-            <a href="#" class="cta-button">Explore Recipes</a>
+        <section class="extra-spacing-section">
+            <div class="container">
+                <h1>About Digihivze</h1>
+                <p>At Digihivze, we're passionate about creating innovative and mouth-watering dishes that delight the senses...</p>
+                
+                <div class="highlight-box">
+                    <p>Our philosophy centers around merging traditional culinary arts with modern, accessible recipes. Discover the perfect blend of technique and flavor right here.</p>
+                </div>
+
+                <div class="process-steps">
+                    <div class="process-step">
+                        <h3>Discover</h3>
+                        <p>Explore our curated index of seasonal and signature recipes, designed for every skill level.</p>
+                    </div>
+                    <div class="process-step">
+                        <h3>Create</h3>
+                        <p>Follow our detailed, easy-to-understand guides and step-by-step instructions for culinary success.</p>
+                    </div>
+                    <div class="process-step">
+                        <h3>Savor</h3>
+                        <p>Share the joy of incredible food with your family and friends, and never look back.</p>
+                    </div>
+                </div>
+
+                <a href="recipes.html" class="btn">Explore Our Recipes <i class="fas fa-arrow-right"></i></a>
+            </div>
         </section>
 
-        <section class="content-section">
-            <h2>Our Culinary Philosophy</h2>
-            <p>We blend tradition with modern technique to deliver high-quality, reliable, and delicious recipes for every kitchen.</p>
+        <section class="food-bg-section extra-spacing-section">
+            <div class="container">
+                <h2>Why Choose Digihivze?</h2>
+                <ul class="feature-list">
+                    <li>Expertly curated recipes tested by professional chefs.</li>
+                    <li>Innovative twists on classic dishes for the modern kitchen.</li>
+                    <li>Clear, high-quality instructions ensuring perfect results every time.</li>
+                    <li>Focus on sustainable and seasonal ingredients.</li>
+                </ul>
+            </div>
         </section>
         
+        <div class="container main-content-section-from-code2 extra-spacing-section">
+            <img src="https://i.ibb.co/Dfm8KX4G/Picsart-25-07-26-14-05-42-460.jpg" alt="A collage of diverse and delicious meals" class="food-image">
+            <p class="bio-text">Digihivze: Fresh ideas, bold flavors, delicious recipes.</p>
+        </div>
     </main>
-
+    
     <div id="footer-placeholder"></div>
 
     <script src="scripts/component-injector.js"></script>
+
 </body>
 </html>
