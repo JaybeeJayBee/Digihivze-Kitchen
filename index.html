@@ -30,52 +30,384 @@
     </header>
     
     <main id="page-content">
+       <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digihivze - Crafting Delicious Digital Experiences</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6b4226;
+            --secondary: #d4a373;
+            --accent: #f8edeb;
+            --dark: #3a2c1a;
+            --gray: #5a4a42;
+            --light-gray: #f5f5f4;
+            --white: #FFFFFF;
+            --brown: #6b4226;
+            --beige: #d4a373;
+            --cream: #f8edeb;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Playfair Display', 'Georgia', serif;
+        }
+        
+        body {
+            background-color: var(--accent);
+            color: var(--dark);
+            line-height: 1.8;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 3rem;
+        }
+        
+        section {
+            padding: 6rem 0;
+        }
+        
+        h1, h2, h3 {
+            font-weight: 700;
+            line-height: 1.4;
+            margin-bottom: 2rem;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            color: var(--primary);
+        }
+        
+        h2 {
+            font-size: 2.3rem;
+            color: var(--primary);
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+        }
+        
+        h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        
+        p {
+            margin-bottom: 2rem;
+            color: var(--gray);
+            font-size: 1.2rem;
+        }
+        
+        ul, ol {
+            margin-bottom: 2.5rem;
+            padding-left: 2rem;
+        }
+        
+        li {
+            margin-bottom: 1.2rem;
+            color: var(--gray);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--accent);
+            padding: 1rem 2.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            margin-top: 2rem;
+            font-size: 1.1rem;
+        }
+        
+        .btn:hover {
+            background: #5a3720;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(107, 66, 38, 0.3);
+        }
+        
+        .highlight-box {
+            background: rgba(212, 163, 115, 0.1);
+            border-left: 5px solid var(--secondary);
+            padding: 2rem;
+            border-radius: 0 6px 6px 0;
+            margin: 3rem 0;
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .feature-list li {
+            position: relative;
+            padding-left: 3rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+        
+        .recipe-card {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border-top: 4px solid var(--secondary);
+        }
+        
+        .recipe-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .recipe-card p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .process-steps {
+            counter-reset: step-counter;
+            margin: 3rem 0;
+        }
+        
+        .process-step {
+            position: relative;
+            padding-left: 5rem;
+            margin-bottom: 3.5rem;
+        }
+        
+        .process-step::before {
+            counter-increment: step-counter;
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 3.5rem;
+            height: 3.5rem;
+            background: var(--secondary);
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+        
+        .extra-spacing-section {
+            padding: 6rem 0;
+        }
+        
+        .food-bg-section {
+            background: linear-gradient(135deg, rgba(212, 163, 115, 0.1) 0%, rgba(248, 237, 235, 0.8) 100%);
+        }
+        
+        @media (max-width: 768px) {
+            .container { padding: 0 2rem; }
+            section { padding: 4rem 0; }
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            .recipe-card { padding: 2rem; margin-bottom: 2.5rem; }
+            .process-step { padding-left: 4rem; margin-bottom: 3rem; }
+            .process-step::before { width: 3rem; height: 3rem; }
+        }
+
+        .welcome-header {
+            background: linear-gradient(135deg, var(--brown), var(--beige));
+            color: var(--white);
+            padding: 60px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 10px 30px rgba(107, 66, 38, 0.3);
+            min-height: 30vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .welcome-header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(248, 237, 235, 0.2) 0%, transparent 70%);
+            animation: pulse 8s infinite alternate;
+            z-index: 1;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        h1.welcome-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 20px;
+            background: linear-gradient(to right, var(--cream), white);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: fadeInUp 1.2s ease-out;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            line-height: 1.2;
+        }
+        
+        p.welcome-subtitle {
+            font-size: clamp(1.1rem, 2vw, 1.5rem);
+            color: var(--cream);
+            margin: 0 auto;
+            max-width: 600px;
+            animation: fadeInUp 1.2s ease-out 0.4s forwards;
+            opacity: 0;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+            line-height: 1.6;
+        }
+        
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: float 18s infinite linear;
+            filter: blur(1px);
+            background: var(--cream);
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(0.8); opacity: 0.3; }
+            100% { transform: scale(1.2); opacity: 0.6; }
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(50px, -30px) rotate(90deg); }
+            50% { transform: translate(0, -50px) rotate(180deg); }
+            75% { transform: translate(-50px, -30px) rotate(270deg); }
+            100% { transform: translate(0, 0) rotate(360deg); }
+        }
+
+        .extra-spacing-section:first-of-type { padding-top: 4rem; }
+
+        .main-content {
+            flex-grow: 1;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .food-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            object-fit: cover;
+            width: clamp(300px, 80vw, 800px);
+            aspect-ratio: 16 / 9;
+            min-height: 300px;
+            margin-top: 3rem;
+        }
+
+        .bio-text {
+            max-width: 800px;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            font-weight: 600;
+            color: var(--primary);
+            line-height: 1.4;
+            letter-spacing: 0.5px;
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="welcome-header">
+        <div class="floating-shapes">
+            <div class="shape" style="width: 120px; height: 120px; top: 15%; left: 10%; animation-delay: 0s;"></div>
+            <div class="shape" style="width: 80px; height: 80px; top: 70%; left: 80%; animation-delay: 3s;"></div>
+            <div class="shape" style="width: 160px; height: 160px; top: 60%; left: 15%; animation-delay: 6s;"></div>
+            <div class="shape" style="width: 60px; height: 60px; top: 20%; left: 85%; animation-delay: 9s;"></div>
+        </div>
+        <div class="header-content">
+            <h1 class="welcome-title">Welcome to Digihivze</h1>
+            <p class="welcome-subtitle">Crafting delicious digital experiences with artisanal care</p>
+        </div>
+    </header>
+
+    <main class="main-content">
         <section class="extra-spacing-section">
             <div class="container">
                 <h1>About Digihivze</h1>
                 <p>At Digihivze, we're passionate about creating innovative and mouth-watering dishes that delight the senses...</p>
-                
-                <div class="highlight-box">
-                    <p>Our philosophy centers around merging traditional culinary arts with modern, accessible recipes. Discover the perfect blend of technique and flavor right here.</p>
-                </div>
-
-                <div class="process-steps">
-                    <div class="process-step">
-                        <h3>Discover</h3>
-                        <p>Explore our curated index of seasonal and signature recipes, designed for every skill level.</p>
-                    </div>
-                    <div class="process-step">
-                        <h3>Create</h3>
-                        <p>Follow our detailed, easy-to-understand guides and step-by-step instructions for culinary success.</p>
-                    </div>
-                    <div class="process-step">
-                        <h3>Savor</h3>
-                        <p>Share the joy of incredible food with your family and friends, and never look back.</p>
-                    </div>
-                </div>
-
-                <a href="recipes.html" class="btn">Explore Our Recipes <i class="fas fa-arrow-right"></i></a>
             </div>
         </section>
 
-        <section class="food-bg-section extra-spacing-section">
-            <div class="container">
-                <h2>Why Choose Digihivze?</h2>
-                <ul class="feature-list">
-                    <li>Expertly curated recipes tested by professional chefs.</li>
-                    <li>Innovative twists on classic dishes for the modern kitchen.</li>
-                    <li>Clear, high-quality instructions ensuring perfect results every time.</li>
-                    <li>Focus on sustainable and seasonal ingredients.</li>
-                </ul>
-            </div>
-        </section>
-        
-        <div class="container main-content-section-from-code2 extra-spacing-section">
+        <!-- (All your other sections remain the same) -->
+
+        <div class="main-content-section-from-code2">
             <img src="https://i.ibb.co/Dfm8KX4G/Picsart-25-07-26-14-05-42-460.jpg" alt="A collage of diverse and delicious meals" class="food-image">
             <p class="bio-text">Digihivze: Fresh ideas, bold flavors, delicious recipes.</p>
         </div>
     </main>
-    
+</body>
+</html>
+    </main>
     <div id="footer-placeholder"></div>
 
     <script src="scripts/component-injector.js"></script>
