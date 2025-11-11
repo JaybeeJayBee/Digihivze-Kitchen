@@ -1,4 +1,4 @@
-/* --- Brand Colors & Variables --- */
+/* 🎨 Brand Colors & Variables */
 :root {
     --color-primary-dark: #6b4226; /* Dark Brown */
     --color-secondary-light: #d4a373; /* Mid-Tone Tan */
@@ -9,7 +9,7 @@
     --spacing-lg: 3rem;
 }
 
-/* --- Global Reset & Typography --- */
+/* 🔄 Global Reset & Typography */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -33,7 +33,7 @@ a:hover {
     color: var(--color-secondary-light);
 }
 
-/* --- MAIN Content Styling (High-Value Look) --- */
+/* 🖼️ MAIN Content Styling (High-Value Look) */
 #page-content {
     min-height: 80vh; /* Ensures footer is below the fold initially */
     padding: var(--spacing-lg) 5vw;
@@ -86,7 +86,7 @@ a:hover {
 }
 
 
-/* --- 2A. FLOATING NAV ICON (Trigger) --- */
+/* 🧭 2A. FLOATING NAV ICON (Trigger) */
 #floating-nav-icon {
     position: fixed;
     top: 25px; /* Offset from the edge */
@@ -117,7 +117,7 @@ a:hover {
     pointer-events: none; /* Make sure it's not clickable when hidden */
 }
 
-/* --- 2B. NAVIGATION MENU (Overlay) --- */
+/* 🍔 2B. NAVIGATION MENU (Overlay) */
 .nav-overlay {
     position: fixed;
     top: 0;
@@ -189,103 +189,4 @@ a:hover {
     color: var(--color-secondary-light);
     font-style: italic;
     font-size: 1.1rem;
-}
-
-
-/* --- 3. STANDARDIZED FOOTER COMPONENT --- */
-#global-footer {
-    background-color: var(--color-primary-dark); /* Distinct dark background */
-    color: var(--color-text-light);
-    padding: var(--spacing-lg) 5vw 1rem;
-    font-size: 0.95rem;
-}
-
-.footer-container {
-    display: flex;
-    justify-content: space-between;
-    gap: 2rem; /* Spacing between columns */
-    max-width: 1200px;
-    margin: 0 auto 1.5rem;
-    flex-wrap: wrap; /* Allows wrapping on smaller screens */
-}
-
-.footer-col {
-    flex: 1;
-    min-width: 180px; /* Ensures readability on small columns */
-}
-
-.footer-identity h3 {
-    color: var(--color-secondary-light);
-    margin-bottom: 0.5rem;
-    font-size: 1.4rem;
-}
-
-.footer-col h4 {
-    margin-bottom: 1rem;
-    color: var(--color-secondary-light);
-    font-weight: 600;
-}
-
-.footer-col ul {
-    list-style: none;
-    padding: 0;
-}
-
-.footer-col li {
-    margin-bottom: 0.5rem;
-}
-
-.footer-col a {
-    color: var(--color-accent-cream);
-}
-
-.footer-col a:hover {
-    color: var(--color-secondary-light);
-}
-
-.social-links a {
-    display: inline-block;
-    margin-right: 10px;
-    font-weight: bold;
-    border: 1px solid var(--color-accent-cream);
-    width: 30px;
-    height: 30px;
-    text-align: center;
-    line-height: 28px;
-    border-radius: 50%;
-    transition: background-color 0.3s;
-}
-
-.social-links a:hover {
-    background-color: var(--color-secondary-light);
-    color: var(--color-primary-dark);
-}
-
-.footer-bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding-top: 1rem;
-    text-align: center;
-    font-size: 0.85rem;
-}
-
-/* --- Responsiveness: Mobile (Standardized Footer) --- */
-@media (max-width: 768px) {
-    .footer-container {
-        flex-direction: column;
-        gap: 1.5rem;
     }
-    .footer-col {
-        min-width: 100%;
-        text-align: center;
-    }
-    .footer-col h4 {
-        margin-top: 0.5rem;
-        margin-bottom: 0.5rem;
-    }
-    .footer-identity {
-        order: -1; /* Puts agency identity first */
-    }
-    .social-links {
-        margin-top: 1rem;
-    }
-}
