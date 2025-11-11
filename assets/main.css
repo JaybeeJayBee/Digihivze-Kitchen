@@ -131,7 +131,7 @@ a:hover {
     pointer-events: none; 
 }
 
-/* --- 2B. NAVIGATION MENU (Overlay) --- */
+/* --- 2B. NAVIGATION MENU (Overlay) - UPDATED FOR WOW EFFECT & SMALLER TEXT --- */
 .nav-overlay {
     position: fixed;
     top: 0;
@@ -160,7 +160,7 @@ a:hover {
     position: absolute;
     top: 20px;
     right: 40px;
-    font-size: 3rem; /* Slightly reduced X size */
+    font-size: 3rem; 
     background: none;
     border: none;
     color: var(--color-secondary-light); /* Accent color for the X */
@@ -187,7 +187,7 @@ a:hover {
 
 .overlay-menu a {
     color: var(--color-text-light);
-    font-size: 1.8rem; /* Dramatically reduced font size (Wowing, yet perfectly readable) */
+    font-size: 1.8rem; /* Reduced font size (Wowing, yet perfectly readable) */
     font-weight: 700; 
     display: inline-block;
     padding: 0.5rem 0;
@@ -228,6 +228,100 @@ a:hover {
     opacity: 0.7;
 }
 
+/* --- WOW EFFECT: THEME BACKGROUND (SUBTLE STEAM) --- */
+
+.steam-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Place behind the menu links */
+    overflow: hidden;
+    pointer-events: none; /* Crucial: ensures links are still clickable */
+}
+
+.steam-background div {
+    position: absolute;
+    display: block;
+    list-style: none;
+    width: 25px;
+    height: 25px;
+    background: rgba(255, 255, 255, 0.05); /* Very light, subtle white/cream */
+    bottom: -150px;
+    animation: animateSteam 25s linear infinite;
+    opacity: 0;
+    border-radius: 50%; /* Circles for a soft, steam-like appearance */
+}
+
+/* Define staggered animation delays and sizes for a natural look */
+.steam-background div:nth-child(1) {
+    left: 25%;
+    width: 80px;
+    height: 80px;
+    animation-delay: 0s;
+}
+.steam-background div:nth-child(2) {
+    left: 10%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 2s;
+    animation-duration: 12s;
+}
+.steam-background div:nth-child(3) {
+    left: 70%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 4s;
+}
+.steam-background div:nth-child(4) {
+    left: 40%;
+    width: 60px;
+    height: 60px;
+    animation-delay: 0s;
+    animation-duration: 18s;
+}
+.steam-background div:nth-child(5) {
+    left: 65%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 0s;
+}
+.steam-background div:nth-child(6) {
+    left: 75%;
+    width: 110px;
+    height: 110px;
+    animation-delay: 3s;
+}
+.steam-background div:nth-child(7) {
+    left: 35%;
+    width: 150px;
+    height: 150px;
+    animation-delay: 7s;
+}
+.steam-background div:nth-child(8) {
+    left: 50%;
+    width: 25px;
+    height: 25px;
+    animation-delay: 15s;
+    animation-duration: 45s;
+}
+
+/* Keyframe definition for the rising steam effect */
+@keyframes animateSteam {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1; /* Fade in as it rises */
+    }
+    100% {
+        transform: translateY(-1000px) rotate(360deg);
+        opacity: 0; /* Fade out at the top */
+    }
+}
+
 
 /* --- 3. STANDARDIZED FOOTER STYLES (Grid Layout Fix) --- */
 
@@ -248,7 +342,6 @@ a:hover {
 }
 
 .footer-section {
-    /* Reset flex properties used previously */
     min-width: unset;
     text-align: left;
 }
@@ -348,7 +441,7 @@ a:hover {
 
 /* --- Responsiveness (Updated for Grid) --- */
 @media (max-width: 768px) {
-    /* FIX: Switch to 2 columns on tablet/mid-screens */
+    /* Switch to 2 columns on tablet/mid-screens */
     .footer-content {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -365,7 +458,7 @@ a:hover {
 }
 
 @media (max-width: 480px) {
-    /* FIX: Switch to a single, centered column on mobile */
+    /* Switch to a single, centered column on mobile */
     .footer-content {
         grid-template-columns: 1fr;
     }
