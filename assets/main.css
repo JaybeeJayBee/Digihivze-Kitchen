@@ -10,6 +10,7 @@
     --color-swirl-particle: rgba(212, 163, 115, 0.35); /* Swirl Color */
     /* FIX: Adjusted pulse color to be darker and less disruptive */
     --color-pulse-darker: #5f3b20; 
+    --color-interaction-glow: #f8edeb; /* Used for the 'X' button glow */
 }
 
 /* --- CRITICAL GLOBAL RESET (Fixes bottom spacing) --- */
@@ -57,6 +58,7 @@ a:hover {
     text-align: center;
 }
 
+/* These styles were part of the initial template and are overridden below by #home-hero */
 .hero-section {
     padding: 6rem 0;
 }
@@ -242,7 +244,7 @@ a:hover {
     opacity: 0.7;
 }
 
-/* --- ANIMATION: SLOW-DRIFTING CHOCOLATE/COFFEE SWIRLS --- */
+/* --- ANIMATION: SLOW-DRIFTING CHOCOLATE/COFFEE SWIRLS (Background component) --- */
 
 .steam-background {
     position: absolute;
@@ -325,7 +327,7 @@ a:hover {
 .footer-content {
     display: grid;
     /* Create 4 equal-width columns on desktop */
-    grid-template-columns: repeat(4, 1fr); 
+    grid-template-columns: repeat(3, 1fr); /* Adjusted from 4 to 3 columns to match the HTML content */
     gap: 30px;
     max-width: 1200px;
     margin: 0 auto;
@@ -466,6 +468,7 @@ a:hover {
         justify-content: center;
     }
 }
+
 /* --- HOMEPAGE SPECIFIC STYLING (Futuristic, High-Value Design) --- */
 
 /* General Section Headings */
@@ -498,14 +501,15 @@ a:hover {
     color: var(--color-primary-dark);
 }
 
-.agency-title {
+/* Overrides the general .agency-title for the wow effect */
+.hero-section .agency-title {
     font-size: 4.5rem; /* Larger than default */
     font-weight: 900;
     color: var(--color-primary-dark);
     text-shadow: 2px 2px 0px var(--color-accent-cream);
 }
 
-.agency-tagline {
+.hero-section .agency-tagline {
     font-size: 1.5rem;
     color: var(--color-primary-dark);
     margin-bottom: 3rem;
@@ -526,6 +530,7 @@ a:hover {
 
 /* BIO TEXT SECTION */
 .bio-section {
+    /* Removed padding: 0 so it aligns correctly with the hero section */
     padding: 0;
     background-color: var(--color-primary-dark);
     color: var(--color-text-light);
@@ -717,7 +722,7 @@ a:hover {
     .values-grid {
         grid-template-columns: 1fr;
     }
-    .agency-title {
+    .hero-section .agency-title {
         font-size: 3.5rem;
     }
 }
@@ -732,11 +737,7 @@ a:hover {
     .process-step h4 {
         text-align: center;
     }
-    .footer-section h3::after {
-        left: 50%;
-        transform: translateX(-50%);
-    }
-    .footer-section {
+    .step-icon {
         text-align: center;
     }
 }
