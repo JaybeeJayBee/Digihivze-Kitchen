@@ -313,7 +313,7 @@ a:hover {
 }
 
 
-/* --- 3. STANDARDIZED FOOTER STYLES (Grid Layout Fix) --- */
+/* --- 3. STANDARDIZED FOOTER STYLES (Grid Layout Fix - PERMANENT) --- */
 
 .footer {
     background-color: var(--color-primary-dark); 
@@ -321,11 +321,11 @@ a:hover {
     padding: 40px 20px;
 }
 
-/* FIX: Using CSS Grid for robust column layout */
+/* FIX: Using CSS Grid with !important to ensure precedence over homepage styles */
 .footer-content {
-    display: grid;
+    display: grid !important; 
     /* Create 4 equal-width columns on desktop */
-    grid-template-columns: repeat(4, 1fr); 
+    grid-template-columns: repeat(4, 1fr) !important; 
     gap: 30px;
     max-width: 1200px;
     margin: 0 auto;
@@ -333,10 +333,11 @@ a:hover {
 
 .footer-section {
     min-width: unset;
-    text-align: left;
+    /* Ensure text alignment is set for the Grid columns */
+    text-align: left !important;
 }
 
-.footer-section h3 {
+.footer-section h3, .footer-section h4 {
     color: var(--color-secondary-light);
     font-size: 1.1em;
     margin-bottom: 15px;
@@ -345,15 +346,19 @@ a:hover {
     font-weight: 600;
 }
 
-.footer-section h3::after {
+.footer-section h3::after, .footer-section h4::after {
     content: '';
     position: absolute;
-    left: 0;
     bottom: 0;
     width: 40px;
     height: 2px;
     background-color: var(--color-secondary-light);
 }
+/* Ensure the divider is aligned left for non-centered sections */
+.footer-section:not(:first-child) h4::after { 
+    left: 0; 
+}
+
 
 .footer-section p, .footer-section a, .footer-section ul li {
     color: var(--color-text-light);
@@ -377,6 +382,11 @@ a:hover {
     margin-bottom: 8px;
 }
 
+.social-icons {
+    display: flex;
+    gap: 10px; /* Space out icons */
+    margin-top: 15px;
+}
 .social-icons a {
     display: inline-flex;
     justify-content: center;
@@ -385,7 +395,6 @@ a:hover {
     height: 40px;
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 50%;
-    margin-right: 10px;
     color: var(--color-text-light);
     font-size: 1.2em;
     transition: background-color 0.3s ease, color 0.3s ease;
@@ -421,7 +430,6 @@ a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     text-align: center;
     padding-top: 1rem;
@@ -433,75 +441,63 @@ a:hover {
 @media (max-width: 768px) {
     /* Switch to 2 columns on tablet/mid-screens */
     .footer-content {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr) !important;
+        text-align: center;
     }
     
     .footer-section {
         /* Center content when there are only two columns */
-        text-align: center;
+        text-align: center !important;
     }
 
-    .footer-section h3::after {
-        left: 50%;
+    .footer-section h3::after, .footer-section h4::after {
+        left: 50% !important;
         transform: translateX(-50%);
+    }
+
+    .social-icons {
+        justify-content: center !important;
     }
 }
 
 @media (max-width: 480px) {
     /* Switch to a single, centered column on mobile */
     .footer-content {
-        grid-template-columns: 1fr;
-    }
-    
-    .footer-section {
-        text-align: center;
-    }
-
-    .footer-section h3::after {
-        left: 50%;
-        transform: translateX(-50%);
-    }
-
-    .social-icons {
-        justify-content: center;
+        grid-template-columns: 1fr !important;
     }
 }
-/* --- 4. HOMEPAGE CONTENT STYLES (Final Integration) --- */
+/* --- 4. FUTURISTIC HOMEPAGE CONTENT STYLES (New Design) --- */
 
-/* --- HOMEPAGE SPECIFIC VARIABLE ALIASES --- */
-/* (Used to ensure styles from the blueprint match the global variables) */
+/* --- HOMEPAGE VARIABLE ALIASES (Ensures consistency) --- */
 :root {
     --primary: var(--color-primary-dark);
     --secondary: var(--color-secondary-light);
     --accent: var(--color-accent-cream);
     --dark: #3a2c1a; 
     --gray: #5a4a42; 
-    --light-gray: #f5f5f4;
     --white: #FFFFFF;
     --brown: var(--color-primary-dark); 
     --beige: var(--color-secondary-light);
     --cream: var(--color-accent-cream);
 }
-/* Ensure Poppins is available for non-heading elements */
-body {
-    font-family: 'Poppins', sans-serif !important;
-}
 
-/* === HOMEPAGE TYPOGRAPHY & LAYOUT RESET === */
-h1, h2, h3 {
+/* GLOBAL RESET FOR CONTENT AREA */
+/* Ensures fonts are prioritized */
+h1, h2, h3, .section-title-center {
     font-family: 'Playfair Display', 'Georgia', serif;
     font-weight: 700;
-    line-height: 1.4;
-    margin-bottom: 2rem;
+}
+p, .intro-text, .bio-text, .btn {
+    font-family: 'Poppins', sans-serif;
+}
+/* Ensure the page content container is reset for new layout */
+#page-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 0 !important; /* Remove any residual padding */
 }
 
-/* Override global spacing to prevent conflicts with template setup */
-#page-content {
-    /* Resetting default padding only if needed, keeping flex-grow */
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-    padding-top: 0 !important;
-}
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -509,267 +505,211 @@ h1, h2, h3 {
 }
 
 section {
-    padding: 6rem 0;
-    text-align: left; /* Defaulting section content alignment */
+    padding: 5rem 0;
 }
 
-/* === HOMEPAGE ELEMENT STYLING === */
-h1 {
-    font-size: 3rem;
-    color: var(--primary);
-}
-
-h2 {
-    font-size: 2.3rem;
-    color: var(--primary);
-    position: relative;
-    padding-bottom: 1rem;
-}
-
-h2::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 80px;
-    height: 4px;
-    background: var(--secondary);
-}
-
-h3 {
-    font-size: 1.6rem;
-    margin-bottom: 1.5rem;
-    color: var(--primary);
-}
-
-p {
-    margin-bottom: 2rem;
-    color: var(--gray);
-    font-size: 1.2rem;
-    font-family: 'Poppins', sans-serif;
-}
-
-li {
-    margin-bottom: 1.2rem;
-    color: var(--gray);
-    font-size: 1.1rem;
-    line-height: 1.8;
-}
-
-.btn {
-    display: inline-block;
-    background: var(--primary);
-    color: var(--accent);
-    padding: 1rem 2.5rem;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    border: none;
-    cursor: pointer;
-    margin-top: 2rem;
-    font-size: 1.1rem;
-    font-family: 'Poppins', sans-serif;
-}
-
-.highlight-box {
-    background: rgba(212, 163, 115, 0.1);
-    border-left: 5px solid var(--secondary);
-    padding: 2rem;
-    border-radius: 0 6px 6px 0;
-    margin: 3rem 0;
-}
-
-.feature-list li::before {
-    content: '✓';
-    position: absolute;
-    left: 0;
-    color: var(--secondary);
-    font-weight: bold;
-    font-size: 1.3rem;
-}
-
-.recipe-card {
-    background: var(--white);
-    border-radius: 10px;
-    padding: 2.5rem;
-    margin-bottom: 3rem;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    border-top: 4px solid var(--secondary);
-}
-
-.process-step {
-    position: relative;
-    padding-left: 5rem;
-    margin-bottom: 3.5rem;
-}
-
-.process-step::before {
-    counter-increment: step-counter;
-    content: counter(step-counter);
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 3.5rem;
-    height: 3.5rem;
-    background: var(--secondary);
-    color: var(--primary);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 1.3rem;
-}
-
-.food-bg-section {
-    background: linear-gradient(135deg, rgba(212, 163, 115, 0.1) 0%, rgba(248, 237, 235, 0.8) 100%);
-}
-
-.welcome-header {
+/* --- 1. HEADER SECTION STYLES (Futuristic) --- */
+.futuristic-header {
     background: linear-gradient(135deg, var(--brown), var(--beige));
     color: var(--white);
-    padding: 60px 20px;
+    padding: 80px 20px;
     text-align: center;
     position: relative;
     overflow: hidden;
-    border-radius: 0 0 20px 20px;
-    box-shadow: 0 10px 30px rgba(107, 66, 38, 0.3);
-    min-height: 30vh;
+    /* Clean, modern edge */
+    border-radius: 0 0 0 0; 
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+    min-height: 40vh;
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.welcome-header::before {
-    content: "";
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(248, 237, 235, 0.2) 0%, transparent 70%);
-    animation: pulse 8s infinite alternate;
-    z-index: 1;
-}
-
-.header-content {
-    position: relative;
-    z-index: 2;
-    max-width: 800px;
-    margin: 0 auto;
 }
 
 h1.welcome-title {
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    margin-bottom: 20px;
-    background: linear-gradient(to right, var(--cream), white);
+    font-size: clamp(2.8rem, 6vw, 4.5rem);
+    margin-bottom: 15px;
+    /* Metallic text gradient */
+    background: linear-gradient(to right, var(--cream), var(--white));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    animation: fadeInUp 1.2s ease-out;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.2);
-    line-height: 1.2;
+    text-shadow: 0 3px 8px rgba(0,0,0,0.3);
 }
 
 p.welcome-subtitle {
-    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
     color: var(--cream);
-    margin: 0 auto;
-    max-width: 600px;
-    animation: fadeInUp 1.2s ease-out 0.4s forwards;
-    opacity: 0;
-    text-shadow: 0 1px 3px rgba(0,0,0,0.2);
-    line-height: 1.6;
+    opacity: 0.8;
+    margin: 0 auto 30px;
 }
 
-.floating-shapes {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    overflow: hidden;
+.btn-header {
+    background: var(--cream) !important;
+    color: var(--primary) !important;
+    font-weight: 600;
+    padding: 1rem 3rem;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.shape {
-    position: absolute;
-    border-radius: 50%;
-    opacity: 0.1;
-    animation: float 18s infinite linear;
-    filter: blur(1px);
-    background: var(--cream);
-}
-
-@keyframes pulse {
-    0% { transform: scale(0.8); opacity: 0.3; }
-    100% { transform: scale(1.2); opacity: 0.6; }
-}
-
-@keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes float {
-    0% { transform: translate(0, 0) rotate(0deg); }
-    25% { transform: translate(50px, -30px) rotate(90deg); }
-    50% { transform: translate(0, -50px) rotate(180deg); }
-    75% { transform: translate(-50px, -30px) rotate(270deg); }
-    100% { transform: translate(0, 0) rotate(360deg); }
-}
-
-/* Specific adjustment for the first content section to reduce gap from header */
-.extra-spacing-section:first-of-type {
-    padding-top: 4rem;
-}
-
-/* Fix: Ensuring main content container allows full flexibility */
-main#page-content {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    padding: 0;
-}
-
-.main-content-section-from-code2 {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+/* --- 2. VALUE & GENERAL CONTENT STYLES --- */
+h2.section-title-center {
     text-align: center;
-    padding: 40px 20px;
+    font-size: 2.8rem;
+    color: var(--primary);
+    margin-bottom: 4rem;
+}
+h2.section-title-center::after {
+    left: 50%;
+    transform: translateX(-50%);
 }
 
+.intro-text {
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    text-align: center;
+    font-size: 1.3rem;
+    color: var(--dark);
+}
+
+.value-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 2rem 0;
+}
+.value-card {
+    text-align: center;
+    padding: 30px;
+    border: 1px solid var(--beige);
+    border-radius: 10px;
+    transition: background 0.3s;
+}
+.value-card:hover {
+    background: var(--accent);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
+}
+.icon-secondary {
+    font-size: 3rem;
+    color: var(--secondary);
+    margin-bottom: 15px;
+}
+.card-title {
+    font-size: 1.5rem;
+    color: var(--primary);
+    margin-bottom: 10px;
+}
+.value-card p {
+    font-size: 1rem;
+    color: var(--gray);
+}
+
+
+/* --- 3. PROCESS SHOWCASE STYLES --- */
+.food-bg-section {
+    background: linear-gradient(135deg, var(--accent) 0%, var(--light-gray) 100%);
+}
+
+.process-showcase-section {
+    padding: 7rem 0;
+}
+
+.process-steps-futuristic {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    margin-top: 3rem;
+    position: relative;
+}
+.process-step-futuristic {
+    flex: 1;
+    text-align: center;
+    position: relative;
+    padding: 0 10px;
+}
+.step-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--primary);
+    color: var(--cream);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0 auto 20px;
+    border: 3px solid var(--secondary);
+    box-shadow: 0 0 0 5px var(--primary); /* Outer ring effect */
+}
+.step-title {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+.cta-bottom-bar {
+    text-align: center;
+    margin-top: 4rem;
+}
+
+.btn-secondary-outline {
+    background: transparent !important;
+    color: var(--primary) !important;
+    border: 2px solid var(--primary);
+    padding: 0.8rem 2.5rem;
+    font-weight: 600;
+}
+.btn-secondary-outline:hover {
+    background: var(--primary) !important;
+    color: var(--white) !important;
+}
+
+
+/* --- 4. IMAGE SHOWCASE STYLES --- */
+.image-showcase-section {
+    padding-top: 0;
+    text-align: center;
+}
 .food-image {
     max-width: 100%;
     height: auto;
     border-radius: 10px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     margin-bottom: 30px;
     object-fit: cover;
-    width: clamp(300px, 80vw, 800px);
+    width: 100%;
     aspect-ratio: 16 / 9;
     min-height: 300px;
-    margin-top: 3rem;
+    margin-top: 2rem;
 }
-
+.image-shadow {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
 .bio-text {
     max-width: 800px;
-    margin-bottom: 20px;
-    font-size: 1.8em;
-    font-weight: 600;
+    margin: 20px auto 0;
+    font-size: 1.5em;
+    font-weight: 500;
     color: var(--primary);
     line-height: 1.4;
     letter-spacing: 0.5px;
-    font-family: 'Poppins', sans-serif;
+    font-style: italic;
 }
 
-@media (max-width: 768px) {
-    .container { padding: 0 2rem; }
 
-    .bio-text {
-        font-size: 1.4em;
+/* --- RESPONSIVENESS --- */
+@media (max-width: 900px) {
+    .process-steps-futuristic {
+        flex-direction: column;
+        gap: 30px;
     }
+    .process-step-futuristic {
+        text-align: left;
+        display: flex;
+        align-items: center;
+    }
+    .step-icon {
+        margin: 0 20px 0 0;
+    }
+}
+@media (max-width: 768px) {
+    .container { padding: 0 1.5rem; }
+    h2.section-title-center { font-size: 2.2rem; }
 }
