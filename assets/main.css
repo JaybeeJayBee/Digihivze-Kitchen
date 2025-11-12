@@ -8,18 +8,8 @@
     --nav-icon-size: 50px;
     --spacing-lg: 3rem;
     --color-swirl-particle: rgba(212, 163, 115, 0.35); /* Swirl Color */
+    /* FIX: Adjusted pulse color to be darker and less disruptive */
     --color-pulse-darker: #5f3b20; 
-    
-    /* HOMEPAGE VARIABLE ALIASES */
-    --primary: var(--color-primary-dark);
-    --secondary: var(--color-secondary-light);
-    --accent: var(--color-accent-cream);
-    --dark: #3a2c1a; 
-    --gray: #5a4a42; 
-    --white: #FFFFFF;
-    --brown: var(--color-primary-dark); 
-    --beige: var(--color-secondary-light);
-    --cream: var(--color-accent-cream);
 }
 
 /* --- CRITICAL GLOBAL RESET (Fixes bottom spacing) --- */
@@ -37,7 +27,7 @@ html, body {
 }
 
 body {
-    font-family: 'Poppins', sans-serif !important; /* Set default text font */
+    font-family: 'Arial', sans-serif;
     color: var(--color-text-dark);
     line-height: 1.6;
     background-color: var(--color-accent-cream);
@@ -61,266 +51,57 @@ a:hover {
 /* --- MAIN Content Styling --- */
 #page-content {
     /* --- STICKY FOOTER SOLUTION: PART 2 --- */
-    flex-grow: 1; 
-    display: flex;
-    flex-direction: column;
-    padding: 0 !important;
+    flex-grow: 1; /* Pushes the footer to the bottom */
+    
+    padding: var(--spacing-lg) 5vw;
+    text-align: center;
 }
 
-/* === HOMEPAGE TYPOGRAPHY & LAYOUT RESET === */
-h1, h2, h3, .section-title-center {
-    font-family: 'Playfair Display', 'Georgia', serif;
-    font-weight: 700;
-    line-height: 1.4;
+.hero-section {
+    padding: 6rem 0;
+}
+
+.agency-title {
+    font-size: 3.5rem;
+    color: var(--color-primary-dark);
+    margin-bottom: 0.5rem;
+}
+
+.agency-tagline {
+    font-size: 1.3rem;
+    color: var(--color-secondary-light);
     margin-bottom: 2rem;
 }
-p, .intro-text, .bio-text, .btn {
-    font-family: 'Poppins', sans-serif;
+
+.cta-button {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    background-color: var(--color-primary-dark);
+    color: var(--color-text-light);
+    border-radius: 5px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease;
 }
 
-.container {
-    max-width: 1200px;
+.cta-button:hover {
+    background-color: var(--color-secondary-light);
+    color: var(--color-primary-dark);
+}
+
+.content-section {
+    padding: 4rem 0;
+    max-width: 900px;
     margin: 0 auto;
-    padding: 0 3rem;
-}
-
-section {
-    padding: 5rem 0;
     text-align: left;
 }
-
-/* --- 1. HEADER SECTION STYLES (Futuristic & Centered) --- */
-.futuristic-header {
-    background: linear-gradient(135deg, var(--brown), var(--beige));
-    color: var(--white);
-    padding: 80px 20px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
-    min-height: 40vh;
-    
-    /* FIX: Ensure content is vertically centered in header */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.header-content {
-    position: relative;
-    z-index: 2;
-    max-width: 800px;
-    margin: 0 auto;
-    
-    /* FIX: Center all elements inside the header content box */
-    display: flex; 
-    flex-direction: column;
-    align-items: center;
-    text-align: center; 
-}
-
-h1.welcome-title {
-    font-size: clamp(2.8rem, 6vw, 4.5rem);
-    margin-bottom: 15px;
-    /* FIX: Centering title text */
-    text-align: center; 
-    
-    background: linear-gradient(to right, var(--cream), var(--white));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    text-shadow: 0 3px 8px rgba(0,0,0,0.3);
-}
-
-p.welcome-subtitle {
-    font-size: clamp(1.1rem, 2vw, 1.3rem);
-    color: var(--cream);
-    opacity: 0.8;
-    margin: 0 auto 30px;
-}
-
-.btn {
-    display: inline-block;
-    background: var(--primary);
-    color: var(--accent);
-    padding: 1rem 2.5rem;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    border: none;
-    cursor: pointer;
-    margin-top: 2rem;
-    font-size: 1.1rem;
-    font-family: 'Poppins', sans-serif;
-}
-.btn-header {
-    background: var(--cream) !important;
-    color: var(--primary) !important;
-    font-weight: 600;
-    padding: 1rem 3rem;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-/* Floating Shapes Animation Styles */
-.floating-shapes {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    overflow: hidden;
-}
-.shape {
-    position: absolute;
-    border-radius: 50%;
-    opacity: 0.1;
-    animation: float 18s infinite linear;
-    filter: blur(1px);
-    background: var(--cream);
-}
-@keyframes float {
-    0% { transform: translate(0, 0) rotate(0deg); }
-    25% { transform: translate(50px, -30px) rotate(90deg); }
-    50% { transform: translate(0, -50px) rotate(180deg); }
-    75% { transform: translate(-50px, -30px) rotate(270deg); }
-    100% { transform: translate(0, 0) rotate(360deg); }
-}
-@keyframes pulse {
-    0% { transform: scale(0.8); opacity: 0.3; }
-    100% { transform: scale(1.2); opacity: 0.6; }
-}
-
-
-/* --- 2. VALUE & GENERAL CONTENT STYLES --- */
-h2.section-title-center {
-    text-align: center;
-    font-size: 2.8rem;
-    color: var(--primary);
-    margin-bottom: 4rem;
-}
-h2.section-title-center::after {
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.intro-text {
-    max-width: 800px;
-    margin: 0 auto 3rem;
-    text-align: center;
-    font-size: 1.3rem;
-    color: var(--dark);
-}
-
-.value-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    padding: 2rem 0;
-}
-.value-card {
-    text-align: center;
-    padding: 30px;
-    border: 1px solid var(--beige);
-    border-radius: 10px;
-    transition: background 0.3s;
-}
-.icon-secondary {
-    font-size: 3rem;
-    color: var(--secondary);
-    margin-bottom: 15px;
-}
-.card-title {
-    font-size: 1.5rem;
-    color: var(--primary);
-    margin-bottom: 10px;
-}
-
-/* --- 3. PROCESS SHOWCASE STYLES --- */
-.food-bg-section {
-    background: linear-gradient(135deg, var(--accent) 0%, var(--light-gray) 100%);
-}
-.process-showcase-section {
-    padding: 7rem 0;
-}
-.process-steps-futuristic {
-    display: flex;
-    justify-content: space-between;
-    gap: 40px;
-    margin-top: 3rem;
-    position: relative;
-}
-.process-step-futuristic {
-    flex: 1;
-    text-align: center;
-    position: relative;
-    padding: 0 10px;
-}
-.step-icon {
-    width: 60px;
-    height: 60px;
-    background: var(--primary);
-    color: var(--cream);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin: 0 auto 20px;
-    border: 3px solid var(--secondary);
-    box-shadow: 0 0 0 5px var(--primary); 
-}
-.step-title {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-}
-.cta-bottom-bar {
-    text-align: center;
-    margin-top: 4rem;
-}
-.btn-secondary-outline {
-    background: transparent !important;
-    color: var(--primary) !important;
-    border: 2px solid var(--primary);
-    padding: 0.8rem 2.5rem;
-    font-weight: 600;
-}
-
-
-/* --- 4. IMAGE SHOWCASE STYLES --- */
-.image-showcase-section {
-    padding-top: 0;
+.content-section h2 {
+    color: var(--color-primary-dark);
+    margin-bottom: 1rem;
+    font-size: 2rem;
     text-align: center;
 }
-.food-image {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-    margin-bottom: 30px;
-    object-fit: cover;
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    min-height: 300px;
-    margin-top: 2rem;
-}
-.image-shadow {
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-}
-.bio-text {
-    max-width: 800px;
-    margin: 20px auto 0;
-    font-size: 1.5em;
-    font-weight: 500;
-    color: var(--primary);
-    line-height: 1.4;
-    letter-spacing: 0.5px;
-    font-style: italic;
-}
 
-
-/* --- NAVIGATION AND FOOTER STYLES (KEEP) --- */
 
 /* --- 2A. FLOATING NAV ICON (Trigger) --- */
 #floating-nav-icon {
@@ -367,21 +148,29 @@ h2.section-title-center::after {
     align-items: center;
     justify-content: center;
 
+    /* Apply pulsing animation */
     animation: backgroundPulse 5s ease-in-out infinite alternate; 
 
+    /* Initial Hidden State (Slide Animation) */
     transform: translateX(100%);
-    transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+    transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1); /* Slicker transition */
 }
+
+/* FIX: Keyframe for soft color pulsing - Reduced brightness at peak */
 @keyframes backgroundPulse {
-    0% { background-color: var(--color-primary-dark); }
-    100% { background-color: var(--color-pulse-darker); }
+    0% {
+        background-color: var(--color-primary-dark); /* Start: Dark Brown */
+    }
+    100% {
+        background-color: var(--color-pulse-darker); /* End: Less bright, maintains readability */
+    }
 }
 
 .nav-overlay.open {
     transform: translateX(0); 
 }
 
-/* Close Button (X) */
+/* Close Button (X) - NEW GLOW INTERACTION FIX */
 .close-btn {
     position: absolute;
     top: 20px;
@@ -392,17 +181,18 @@ h2.section-title-center::after {
     color: var(--color-secondary-light);
     cursor: pointer;
     opacity: 1;
-    transition: transform 0.3s, opacity 0.3s, color 0.1s, text-shadow 0.1s;
+    transition: transform 0.3s, opacity 0.3s, color 0.1s, text-shadow 0.1s; /* Added transitions */
 }
 
 .close-btn:hover {
     color: var(--color-accent-cream);
     transform: rotate(90deg);
 }
+/* Crucial Fix: Apply glow when button is clicked (active) */
 .close-btn:active {
     color: var(--color-accent-cream);
     text-shadow: 0 0 10px var(--color-interaction-glow); 
-    transform: rotate(90deg) scale(1.05);
+    transform: rotate(90deg) scale(1.05); /* Adds a small press feedback */
 }
 
 /* Menu Links */
@@ -411,9 +201,11 @@ h2.section-title-center::after {
     padding: 0;
     text-align: center;
 }
+
 .overlay-menu li {
-    margin: 0.8rem 0;
+    margin: 0.8rem 0; /* Significantly reduced vertical spacing */
 }
+
 .overlay-menu a {
     color: var(--color-text-light);
     font-size: 1.8rem; 
@@ -426,12 +218,22 @@ h2.section-title-center::after {
     transition: color 0.3s, text-shadow 0.3s; 
     line-height: 1.2; 
 }
-.overlay-menu a::after { display: none; }
+
+/* --- WOW EFFECT: Pure Glow Hover --- */
+.overlay-menu a::after {
+    display: none; 
+}
+
 .overlay-menu a:hover,
 .overlay-menu a[href$="index.html"] { 
     color: var(--color-secondary-light);
     text-shadow: 0 0 10px var(--color-secondary-light); 
 }
+
+.overlay-menu a:hover::after {
+    width: 0; 
+}
+
 .overlay-tagline {
     margin-top: 2.5rem; 
     color: var(--color-secondary-light);
@@ -441,24 +243,77 @@ h2.section-title-center::after {
 }
 
 /* --- ANIMATION: SLOW-DRIFTING CHOCOLATE/COFFEE SWIRLS --- */
+
 .steam-background {
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; overflow: hidden; pointer-events: none; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; 
+    overflow: hidden;
+    pointer-events: none; 
 }
+
 .steam-background div {
-    position: absolute; display: block; list-style: none; border-radius: 50%; background: var(--color-swirl-particle); 
-    bottom: -150px; animation: animateSwirl 35s linear infinite; opacity: 0; filter: blur(5px);
+    position: absolute;
+    display: block;
+    list-style: none;
+    /* Simple large circle shape */
+    border-radius: 50%; 
+    /* Swirl Color */
+    background: var(--color-swirl-particle); 
+    bottom: -150px;
+    /* FIX: Increase speed of floating animation */
+    animation: animateSwirl 35s linear infinite; 
+    opacity: 0;
+    filter: blur(5px); /* INCREASED blur for a softer, liquid look */
 }
-/* Staggered animation styles remain defined below the main block */
+
+/* Define staggered animation delays and sizes */
+.steam-background div:nth-child(1) {
+    left: 15%; width: 100px; height: 100px; animation-delay: 0s;
+}
+.steam-background div:nth-child(2) {
+    left: 85%; width: 50px; height: 50px; animation-delay: 5s; animation-duration: 20s;
+}
+.steam-background div:nth-child(3) {
+    left: 40%; width: 150px; height: 150px; animation-delay: 10s; animation-duration: 50s;
+}
+.steam-background div:nth-child(4) {
+    left: 70%; width: 80px; height: 80px; animation-delay: 2s; animation-duration: 30s;
+}
+.steam-background div:nth-child(5) {
+    left: 5%; width: 60px; height: 60px; animation-delay: 15s;
+}
+.steam-background div:nth-child(6) {
+    left: 60%; width: 120px; height: 120px; animation-delay: 8s; animation-duration: 60s;
+}
+.steam-background div:nth-child(7) {
+    left: 25%; width: 90px; height: 90px; animation-delay: 12s; animation-duration: 45s;
+}
+.steam-background div:nth-child(8) {
+    left: 95%; width: 70px; height: 70px; animation-delay: 20s;
+}
 
 /* Keyframe definition for the rising liquid swirl */
 @keyframes animateSwirl {
-    0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0; }
-    30% { opacity: 0.9; }
-    100% { transform: translateY(-100vh) translateX(50px) rotate(360deg); opacity: 0; }
+    0% {
+        transform: translateY(0) translateX(0) rotate(0deg);
+        opacity: 0;
+    }
+    30% {
+        opacity: 0.9; /* Fully visible mid-rise */
+    }
+    100% {
+        /* Rise, drift horizontally, and rotate very slowly */
+        transform: translateY(-100vh) translateX(50px) rotate(360deg); 
+        opacity: 0; /* Fade out at the top */
+    }
 }
 
 
-/* --- 3. STANDARDIZED FOOTER STYLES (Grid Layout Fix - PERMANENT) --- */
+/* --- 3. STANDARDIZED FOOTER STYLES (Grid Layout Fix) --- */
 
 .footer {
     background-color: var(--color-primary-dark); 
@@ -466,10 +321,11 @@ h2.section-title-center::after {
     padding: 40px 20px;
 }
 
-/* FIX: Using CSS Grid with !important to ensure precedence over homepage styles */
+/* FIX: Using CSS Grid for robust column layout */
 .footer-content {
-    display: grid !important; 
-    grid-template-columns: repeat(4, 1fr) !important; 
+    display: grid;
+    /* Create 4 equal-width columns on desktop */
+    grid-template-columns: repeat(4, 1fr); 
     gap: 30px;
     max-width: 1200px;
     margin: 0 auto;
@@ -477,10 +333,10 @@ h2.section-title-center::after {
 
 .footer-section {
     min-width: unset;
-    text-align: left !important;
+    text-align: left;
 }
 
-.footer-section h3, .footer-section h4 {
+.footer-section h3 {
     color: var(--color-secondary-light);
     font-size: 1.1em;
     margin-bottom: 15px;
@@ -489,16 +345,14 @@ h2.section-title-center::after {
     font-weight: 600;
 }
 
-.footer-section h3::after, .footer-section h4::after {
+.footer-section h3::after {
     content: '';
     position: absolute;
+    left: 0;
     bottom: 0;
     width: 40px;
     height: 2px;
     background-color: var(--color-secondary-light);
-}
-.footer-section h3::after, .footer-section h4::after {
-    left: 0; 
 }
 
 .footer-section p, .footer-section a, .footer-section ul li {
@@ -509,10 +363,65 @@ h2.section-title-center::after {
     font-size: 1em;
 }
 
+.footer-section a:hover {
+    color: var(--color-secondary-light);
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 8px;
+}
+
+.social-icons a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    margin-right: 10px;
+    color: var(--color-text-light);
+    font-size: 1.2em;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-decoration: none;
+}
+
+.social-icons a:hover {
+    background-color: var(--color-secondary-light);
+    color: var(--color-primary-dark);
+}
+
+.footer-button {
+    display: inline-block;
+    background-color: var(--color-secondary-light);
+    color: var(--color-primary-dark);
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9em;
+    margin-top: 0;
+}
+
+.footer-button:hover {
+    background-color: var(--color-accent-cream);
+    color: var(--color-primary-dark);
+}
+
 .footer-bottom {
     display: flex;
     justify-content: center;
     align-items: center;
+    
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     text-align: center;
     padding-top: 1rem;
@@ -520,27 +429,40 @@ h2.section-title-center::after {
     font-size: 0.85rem;
 }
 
-/* --- RESPONSIVENESS --- */
+/* --- Responsiveness (Updated for Grid) --- */
 @media (max-width: 768px) {
-    .container { padding: 0 1.5rem; }
-    h2.section-title-center { font-size: 2.2rem; }
-
-    /* Footer Fix for Tablet */
+    /* Switch to 2 columns on tablet/mid-screens */
     .footer-content {
-        grid-template-columns: repeat(2, 1fr) !important;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .footer-section {
+        /* Center content when there are only two columns */
         text-align: center;
     }
-    .footer-section { text-align: center !important; }
-    .footer-section h3::after, .footer-section h4::after {
-        left: 50% !important;
+
+    .footer-section h3::after {
+        left: 50%;
         transform: translateX(-50%);
     }
-    .social-icons { justify-content: center !important; }
 }
 
 @media (max-width: 480px) {
-    /* Footer Fix for Mobile */
+    /* Switch to a single, centered column on mobile */
     .footer-content {
-        grid-template-columns: 1fr !important;
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-section {
+        text-align: center;
+    }
+
+    .footer-section h3::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .social-icons {
+        justify-content: center;
     }
 }
