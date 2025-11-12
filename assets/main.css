@@ -14,7 +14,6 @@
 
 /* --- CRITICAL GLOBAL RESET (Fixes bottom spacing and horizontal overflow) --- */
 html {
-    /* CRITICAL FIX: Ensures the HTML container itself does not cause horizontal scroll */
     overflow-x: hidden;
 }
 
@@ -56,16 +55,14 @@ a:hover {
 #page-content {
     /* --- STICKY FOOTER SOLUTION: PART 2 --- */
     flex-grow: 1; 
-    
-    /* Adjusted padding to be consistent and constrain content */
-    padding: 0; 
+    padding: 0; /* Ensures sections control their own padding */
     text-align: center;
 }
 
 /* General Section Styling */
 .content-section {
     padding: var(--spacing-lg) 5vw; /* Consistent padding across all main sections */
-    max-width: 1200px; /* Max width for content center */
+    max-width: 1200px; 
     margin: 0 auto;
     text-align: left;
 }
@@ -437,8 +434,11 @@ a:hover {
     padding: 10rem 5vw;
     background-color: var(--color-secondary-light);
     color: var(--color-primary-dark);
+    /* Reset margin just in case a margin collapsed */
+    margin: 0; 
 }
 .hero-section .agency-title {
+    /* FIX: Reduce font size drastically on mobile */
     font-size: 4.5rem;
     font-weight: 900;
     color: var(--color-primary-dark);
@@ -467,6 +467,8 @@ a:hover {
     background-color: var(--color-primary-dark);
     color: var(--color-text-light);
     text-align: left;
+    /* Remove padding/margin that could cause overlap */
+    margin: 0;
 }
 .bio-container {
     padding: 3rem 5vw;
@@ -647,5 +649,15 @@ a:hover {
     }
     .process-step h4 {
         text-align: center;
+    }
+    .hero-section .agency-title {
+        /* FIX: Ensure the header text fits perfectly on a small screen */
+        font-size: 2.5rem; 
+    }
+    .hero-section .agency-tagline {
+        font-size: 1.1rem;
+    }
+    .bio-text p {
+        font-size: 1.5rem;
     }
 }
