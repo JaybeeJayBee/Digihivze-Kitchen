@@ -793,21 +793,31 @@ a:hover {
     }
 }
 
-
 /* --- 9. CALL TO ACTION (CTA) SECTION --- */
 .cta-section {
     padding: 10rem 5vw;
-    color: var(--color-text-light);
+    /* FIX: Changed background to the light accent color */
+    background-color: var(--color-accent-cream); 
+    color: var(--color-primary-dark); /* Default dark text for the section */
 }
 .cta-main-heading {
-    color: var(--color-secondary-light);
+    /* FIX: Changed main heading color to primary dark for contrast */
+    color: var(--color-primary-dark);
+}
+.cta-intro-heading {
+    /* FIX: Changed intro heading color to primary dark for contrast */
+    color: var(--color-primary-dark);
+}
+.body-text-standard.light-text-body {
+    /* FIX: Overriding the previous light text color to use the dark primary color */
+    color: var(--color-primary-dark);
 }
 .cta-final-button {
     display: inline-block;
     padding: 1rem 3rem;
-    background-color: var(--color-primary-dark); /* Primary color */
+    background-color: var(--color-primary-dark); /* Button remains dark primary */
     color: var(--color-text-light);
-    border: 2px solid var(--color-text-light);
+    border: 2px solid var(--color-primary-dark);
     border-radius: 50px; 
     font-weight: 700;
     letter-spacing: 1px;
@@ -890,3 +900,4 @@ a:hover {
         flex-basis: 100%; /* 1 per row on small mobile */
     }
 }
+
