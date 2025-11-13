@@ -470,14 +470,16 @@ a:hover {
 
 /* --- 2. HEADER/HERO SECTION (100vh with Animation) --- */
 .hero-full-height {
-    min-height: 100vh; 
+    /* FIX: Reduce height significantly for a professional look */
+    min-height: 60vh; 
+    
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* FIX: Use a richer, slightly darkened secondary color for the warm, professional background */
-    background-color: #c99c68; /* Slightly darker than D4A373 */
-    color: var(--color-text-light); /* Default light text for the section */
+    /* Main Background remains the rich warm color */
+    background-color: #c99c68;
+    color: var(--color-text-light);
     padding: 0;
     margin: 0;
     background-image: none; 
@@ -486,12 +488,11 @@ a:hover {
 .hero-content-area {
     position: relative;
     z-index: 10;
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.4); /* Subtle shadow for text pop */
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 }
 
 .hero-title {
     font-size: 5rem;
-    /* FIX: Set title text to LIGHT ACCENT color for high contrast */
     color: var(--color-accent-cream); 
     font-family: 'Playfair Display', serif;
     font-weight: 700;
@@ -501,7 +502,6 @@ a:hover {
 
 .hero-subtitle {
     font-size: 1.6rem;
-    /* FIX: Set subtitle text to LIGHT ACCENT color */
     color: var(--color-accent-cream); 
     font-family: 'Poppins', sans-serif;
     font-weight: 300;
@@ -509,7 +509,7 @@ a:hover {
     letter-spacing: 1px;
 }
 
-/* Floating Bubbles Animation */
+/* Floating Bubbles Animation remains the same below this line, its position will adjust automatically */
 .hero-animation-bg {
     position: absolute;
     top: 0;
@@ -523,12 +523,11 @@ a:hover {
 .hero-animation-bg div {
     position: absolute;
     display: block;
-    /* FIX: Change bubble color to a translucent version of the background color for ghosted effect */
-    background: rgba(255, 255, 255, 0.2); /* Translucent white/light color */
+    background: rgba(255, 255, 255, 0.2);
     border-radius: 50%;
     opacity: 0;
     animation: floatingBubbles 20s infinite ease-in-out;
-    filter: blur(8px); /* Increased blur for a softer, professional look */
+    filter: blur(8px);
 }
 /* Bubble positions and animation-delays remain the same */
 .bubble-1 { top: 70%; left: 10%; width: 100px; height: 100px; animation-delay: 0s; }
@@ -540,6 +539,16 @@ a:hover {
     0% { transform: translateY(0) translateX(0); opacity: 0; }
     30% { opacity: 0.7; } 
     100% { transform: translateY(-100vh) translateX(50px); opacity: 0; }
+}
+
+/* Add a responsive adjustment to keep it small on small screens */
+@media (max-width: 600px) {
+    .hero-full-height {
+        min-height: 50vh; 
+    }
+    .hero-title {
+        font-size: 4rem;
+    }
 }
 
 
