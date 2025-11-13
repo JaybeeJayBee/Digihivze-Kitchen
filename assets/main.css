@@ -467,7 +467,6 @@ a:hover {
     background-color: var(--color-primary-dark);
 }
 
-
 /* --- 2. HEADER/HERO SECTION (100vh with Animation) --- */
 .hero-full-height {
     min-height: 70vh; 
@@ -475,26 +474,34 @@ a:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
+    /* Background setup for Parallax/Depth Effect */
     background-color: #c99c68;
+    /* FIX: Use a subtle texture image for depth */
+    background-image: url('https://via.placeholder.com/1920x1080/c99c68/c09164?text=Subtle+Texture');
+    background-size: cover;
+    background-position: center;
+    /* FIX: This property creates the depth-of-field/parallax look */
+    background-attachment: fixed; 
+    
     color: var(--color-text-light);
     padding: 0;
     margin: 0;
-    background-image: none;
     
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.25); 
-    
-    /* FIX: Add a strong margin bottom to push the next section down */
     margin-bottom: 2rem; 
 }
-/* ... rest of the .hero-full-height block is the same ... */
 
 .hero-content-area {
     position: relative;
     z-index: 10;
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-    
-    /* FIX: Apply the scaling animation */
+    /* Apply the scaling animation */
     animation: titleScale 4s ease-in-out infinite alternate;
+    /* FIX: Add a background blur to make text pop over texture/bubbles */
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px 40px;
+    border-radius: 10px;
+    backdrop-filter: blur(2px);
 }
 
 .hero-title {
@@ -503,7 +510,10 @@ a:hover {
     font-family: 'Playfair Display', serif;
     font-weight: 700;
     margin-bottom: 0.25rem;
-    text-shadow: none; 
+    /* FIX: Add slight letter spacing for a sleek, spaced-out feel */
+    letter-spacing: 2px;
+    /* FIX: Small text shadow for a crisp, digital look */
+    text-shadow: 0 0 2px rgba(248, 237, 235, 0.5); 
 }
 
 .hero-subtitle {
@@ -515,13 +525,12 @@ a:hover {
     letter-spacing: 1px;
 }
 
-/* --- NEW ANIMATION KEYFRAMES (Visible Scaling/Floating) --- */
+/* --- ANIMATION KEYFRAMES (Title Scale and Float) --- */
 @keyframes titleScale {
     0% {
-        transform: translateY(0) scale(1.0); /* Start position and scale */
+        transform: translateY(0) scale(1.0); 
     }
     100% {
-        /* FIX: Combines small vertical float with a small scaling change */
         transform: translateY(-8px) scale(1.01); 
     }
 }
@@ -558,10 +567,10 @@ a:hover {
     100% { transform: translateY(-100vh) translateX(50px); opacity: 0; }
 }
 
-/* Responsive adjustment */
+/* Add a responsive adjustment to keep it small on small screens */
 @media (max-width: 600px) {
     .hero-full-height {
-        min-height: 55vh; /* Slightly larger on mobile now */
+        min-height: 55vh; 
     }
     .hero-title {
         font-size: 4rem;
