@@ -475,44 +475,39 @@ a:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* FIX: Set background to the Mid-Tone Secondary color (lighter) */
-    background-color: var(--color-secondary-light); 
-    color: var(--color-text-light);
+    /* FIX: Use a richer, slightly darkened secondary color for the warm, professional background */
+    background-color: #c99c68; /* Slightly darker than D4A373 */
+    color: var(--color-text-light); /* Default light text for the section */
     padding: 0;
     margin: 0;
-    /* FIX: Adjust gradient opacity since the base color is lighter */
-    background-image: linear-gradient(rgba(212, 163, 115, 0.4), rgba(212, 163, 115, 0.6)), url('https://via.placeholder.com/1920x1080/6b4226/fff?text=High-Res+Chef+Plating+Dish');
-    background-size: cover;
-    background-position: center;
+    background-image: none; 
 }
 
 .hero-content-area {
     position: relative;
     z-index: 10;
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.4); /* Subtle shadow for text pop */
 }
 
 .hero-title {
     font-size: 5rem;
-    /* FIX: Set title text to PRIMARY DARK color for contrast against the lighter background */
-    color: var(--color-primary-dark); 
+    /* FIX: Set title text to LIGHT ACCENT color for high contrast */
+    color: var(--color-accent-cream); 
     font-family: 'Playfair Display', serif;
     font-weight: 700;
     margin-bottom: 0.25rem;
-    /* FIX: Use the background color for the text shadow */
-    text-shadow: 4px 4px 0px var(--color-accent-cream); 
+    text-shadow: none; 
 }
 
 .hero-subtitle {
     font-size: 1.6rem;
-    /* FIX: Set subtitle text to PRIMARY DARK color */
-    color: var(--color-primary-dark); 
+    /* FIX: Set subtitle text to LIGHT ACCENT color */
+    color: var(--color-accent-cream); 
     font-family: 'Poppins', sans-serif;
     font-weight: 300;
     margin-bottom: 2rem;
     letter-spacing: 1px;
 }
-/* Floating Bubbles Animation CSS remains the same below this line */
 
 /* Floating Bubbles Animation */
 .hero-animation-bg {
@@ -528,13 +523,14 @@ a:hover {
 .hero-animation-bg div {
     position: absolute;
     display: block;
-    background: var(--color-secondary-fade); 
+    /* FIX: Change bubble color to a translucent version of the background color for ghosted effect */
+    background: rgba(255, 255, 255, 0.2); /* Translucent white/light color */
     border-radius: 50%;
     opacity: 0;
     animation: floatingBubbles 20s infinite ease-in-out;
-    filter: blur(5px);
+    filter: blur(8px); /* Increased blur for a softer, professional look */
 }
-
+/* Bubble positions and animation-delays remain the same */
 .bubble-1 { top: 70%; left: 10%; width: 100px; height: 100px; animation-delay: 0s; }
 .bubble-2 { top: 20%; left: 50%; width: 60px; height: 60px; animation-delay: 5s; animation-duration: 25s; }
 .bubble-3 { top: 85%; left: 80%; width: 150px; height: 150px; animation-delay: 10s; animation-duration: 30s; }
@@ -542,7 +538,7 @@ a:hover {
 
 @keyframes floatingBubbles {
     0% { transform: translateY(0) translateX(0); opacity: 0; }
-    30% { opacity: 0.6; }
+    30% { opacity: 0.7; } 
     100% { transform: translateY(-100vh) translateX(50px); opacity: 0; }
 }
 
