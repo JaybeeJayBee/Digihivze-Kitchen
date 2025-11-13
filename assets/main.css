@@ -478,11 +478,11 @@ a:hover {
     background-color: var(--color-primary-dark); 
     color: var(--color-text-light);
     padding: 0;
-    margin: 0;
+    margin: 0; /* FIX: Set margin to 0 */
     background-image: none;
     
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.25); 
-    margin-bottom: 2rem; 
+    /* FIX: The margin-bottom property is now removed */
     
     position: relative; 
     overflow: hidden;
@@ -553,11 +553,12 @@ a:hover {
 /* --- 3. IMAGE & BIO SECTION (High Contrast Bar) --- */
 .bio-bar {
     padding: 0;
+    /* FIX: Set margin-top to zero explicitly */
+    margin: 0 auto; 
     /* FIX: Changed background to PRIMARY DARK for high contrast */
     background-color: var(--color-primary-dark); 
     color: var(--color-text-light);
     text-align: center;
-    margin: 0 auto;
 }
 .bio-text-bar {
     font-size: 1.8rem;
