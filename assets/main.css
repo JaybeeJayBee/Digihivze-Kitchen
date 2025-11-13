@@ -470,25 +470,28 @@ a:hover {
 
 /* --- 2. HEADER/HERO SECTION (100vh with Animation) --- */
 .hero-full-height {
-    /* FIX: Reduce height significantly for a professional look */
     min-height: 60vh; 
-    
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* Main Background remains the rich warm color */
     background-color: #c99c68;
     color: var(--color-text-light);
     padding: 0;
     margin: 0;
-    background-image: none; 
+    background-image: none;
+    
+    /* FIX: Add subtle shadow to create a lifted, divided effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
 }
 
 .hero-content-area {
     position: relative;
     z-index: 10;
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    
+    /* FIX: Apply the subtle floating animation to the content area */
+    animation: titleFloat 3s ease-in-out infinite alternate;
 }
 
 .hero-title {
@@ -509,7 +512,18 @@ a:hover {
     letter-spacing: 1px;
 }
 
-/* Floating Bubbles Animation remains the same below this line, its position will adjust automatically */
+/* --- NEW ANIMATION KEYFRAMES --- */
+@keyframes titleFloat {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        /* Subtle vertical movement */
+        transform: translateY(-5px); 
+    }
+}
+
+/* Floating Bubbles Animation remains the same below this line */
 .hero-animation-bg {
     position: absolute;
     top: 0;
