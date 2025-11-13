@@ -470,9 +470,7 @@ a:hover {
 
 /* --- 2. HEADER/HERO SECTION (100vh with Animation) --- */
 .hero-full-height {
-    /* FIX: Increase height for a better presence (e.g., 70% of viewport) */
     min-height: 70vh; 
-    
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -483,9 +481,12 @@ a:hover {
     margin: 0;
     background-image: none;
     
-    /* FIX: Make the box shadow much stronger/clearer for obvious separation */
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.25); 
+    
+    /* FIX: Add a strong margin bottom to push the next section down */
+    margin-bottom: 2rem; 
 }
+/* ... rest of the .hero-full-height block is the same ... */
 
 .hero-content-area {
     position: relative;
@@ -569,14 +570,19 @@ a:hover {
 
 
 /* --- 3. IMAGE & BIO SECTION (High Contrast Bar) --- */
-.bio-strip {
+.bio-bar {
     padding: 0;
+    /* FIX: Set margin-top to zero to rely entirely on the header's margin-bottom for spacing */
+    margin: 0 auto 0 auto;
+    background-color: var(--color-primary-dark);
+    color: var(--color-text-light);
+    text-align: center;
 }
-.bio-text-styled {
+.bio-text-bar {
     font-size: 1.8rem;
     font-weight: 500;
-    color: var(--color-primary-dark);
-    padding: 3rem 5vw;
+    color: var(--color-accent-cream);
+    padding: 2.5rem 5vw;
     max-width: 1000px;
     margin: 0 auto;
     text-align: center;
