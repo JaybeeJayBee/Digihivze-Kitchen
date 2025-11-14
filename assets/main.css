@@ -748,20 +748,27 @@ a:hover {
     line-height: 1.5;
     color: var(--color-primary-dark);
 }
+
+/* Updated Quote Mark Styling */
 .open-quote, .close-quote {
-    font-size: 8rem;
-    color: rgba(212, 163, 115, 0.2); /* Oversized, transparent quote marks */
+    font-size: 6rem; /* Reduced size for elegance */
+    color: rgba(212, 163, 115, 0.4); /* Darker and less transparent for visibility */
     position: absolute;
     line-height: 1;
+    z-index: 1; /* Ensures it stays behind the text */
 }
+
 .open-quote {
-    top: -40px;
+    top: -15px; /* FIX: Raised from -40px to -15px to avoid overlapping the top line */
     left: 0;
 }
 .close-quote {
-    bottom: -80px;
+    bottom: -60px; /* Adjusted to match the visual weight of the top mark */
     right: 0;
 }
+
+
+/* ... rest of the CSS continues ... */
 
 
 /* --- 8. WHY TRUST US? SECTION --- */
