@@ -738,10 +738,8 @@ a:hover {
     max-width: 900px;
     margin: 3rem auto 0;
     position: relative;
-    /* RESTORE PADDING for the content inside the lines */
     padding: 30px 20px; 
     
-    /* Stronger horizontal lines */
     border-top: 3px solid var(--color-secondary-light); 
     border-bottom: 3px solid var(--color-secondary-light);
 }
@@ -750,10 +748,9 @@ a:hover {
     font-style: italic;
     line-height: 1.5;
     color: var(--color-primary-dark);
-    /* Remove internal padding that was causing conflict */
     padding: 0; 
     margin: 0 auto;
-    max-width: 80%; /* Constrain text width for visual effect */
+    max-width: 80%;
 }
 
 /* Updated Quote Mark Styling */
@@ -767,18 +764,20 @@ a:hover {
 }
 
 .open-quote {
-    /* FIX: Position relative to the top-left corner of the container */
-    top: -10px; 
+    /* FIX: Set TOP to 0 (aligns with the top line) and then shift DOWN using translateY */
+    top: 0; 
     left: 20px; 
-    /* FIX: Ensure the quote mark is visually behind the line */
+    /* This pushes the quote mark down exactly by its own height, making it rest below the line */
+    transform: translateY(100%); 
     z-index: 0; 
 }
 .close-quote {
-    /* FIX: Position relative to the bottom-right corner of the container */
-    bottom: -45px; 
+    /* FIX: Set BOTTOM to 0 (aligns with the bottom line) and then shift UP using translateY */
+    bottom: 0; 
     right: 20px;
+    /* This pulls the quote mark up exactly by its own height, making it rest above the line */
+    transform: translateY(-100%);
 }
-
 /* ... rest of the CSS continues ... */
 
 
