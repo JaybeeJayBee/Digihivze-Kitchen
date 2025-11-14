@@ -1764,18 +1764,21 @@ body {
     border-bottom: none;
 }
 
-/* --- CORRECTED FLOATING BUBBLE ANIMATION --- */
+/* --- FINAL FIX: CONTINUOUS FLOATING BUBBLE ANIMATION --- */
+
+.affiliate-hero {
+    position: relative;
+    overflow: hidden; 
+}
 
 .bubbles {
-    /* Keep position and size the same */
     position: absolute;
-    bottom: 0; 
+    top: 0; 
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 100%; 
     z-index: 0;
-    /* Ensure the bubbles only fill the header, preventing large vertical travel */
-    overflow: hidden; 
+    pointer-events: none; /* Ensure bubbles don't interfere with clicks */
 }
 
 .bubbles div {
@@ -1784,44 +1787,33 @@ body {
     height: 40px;
     background-color: rgba(255, 255, 255, 0.15);
     border-radius: 50%;
-    /* Use the new smoothFloat animation */
-    animation: smoothFloat 15s linear infinite; 
+    /* Use float and change the animation-duration/delay on the child elements */
+    animation: continuousFloat linear infinite; 
+    bottom: -150px; /* Start all bubbles well below the screen */
 }
 
-/* Updated Delay and Duration for Variation */
-.bubbles div:nth-child(1) { left: 25%; width: 60px; height: 60px; animation-duration: 12s; animation-delay: 0s; }
-.bubbles div:nth-child(2) { left: 10%; width: 20px; height: 20px; animation-duration: 17s; animation-delay: 2s; }
-.bubbles div:nth-child(3) { left: 70%; width: 20px; height: 20px; animation-duration: 20s; animation-delay: 4s; }
+/* Define bubble size, position, and unique timing */
+.bubbles div:nth-child(1) { left: 25%; width: 60px; height: 60px; animation-duration: 15s; animation-delay: 0s; }
+.bubbles div:nth-child(2) { left: 10%; width: 20px; height: 20px; animation-duration: 20s; animation-delay: 2s; }
+.bubbles div:nth-child(3) { left: 70%; width: 20px; height: 20px; animation-duration: 25s; animation-delay: 4s; }
 .bubbles div:nth-child(4) { left: 40%; width: 80px; height: 80px; animation-duration: 18s; animation-delay: 0s; }
 .bubbles div:nth-child(5) { left: 65%; width: 25px; height: 25px; animation-duration: 10s; animation-delay: 0s; }
-.bubbles div:nth-child(6) { left: 75%; width: 110px; height: 110px; animation-duration: 25s; animation-delay: 3s; }
+.bubbles div:nth-child(6) { left: 75%; width: 110px; height: 110px; animation-duration: 30s; animation-delay: 3s; }
 .bubbles div:nth-child(7) { left: 35%; width: 150px; height: 150px; animation-duration: 22s; animation-delay: 7s; }
 .bubbles div:nth-child(8) { left: 50%; width: 25px; height: 25px; animation-duration: 16s; animation-delay: 10s; }
 .bubbles div:nth-child(9) { left: 20%; width: 15px; height: 15px; animation-duration: 11s; animation-delay: 5s; }
 .bubbles div:nth-child(10) { left: 85%; width: 90px; height: 90px; animation-duration: 19s; animation-delay: 8s; }
 
 
-@keyframes smoothFloat {
+@keyframes continuousFloat {
     0% {
-        transform: translateY(100%) translateX(0) scale(0.7); /* Start from bottom, slightly smaller */
-        opacity: 0.3;
-    }
-    50% {
-        transform: translateY(-50%) translateX(10px) scale(1.0); /* Move up to middle, slightly shift right/left */
-        opacity: 0.1;
+        /* Start position well below the hero section */
+        transform: translateY(0) translateX(0) scale(0.7); 
+        opacity: 0.2;
     }
     100% {
-        transform: translateY(-100%) translateX(-10px) scale(0.7); /* Move off the top, slightly shift opposite */
-        opacity: 0.3;
+        /* Move 100% of the screen height PLUS the height of the bubble container */
+        transform: translateY(-100vh) translateX(10px) scale(1.2); 
+        opacity: 0;
     }
-}
-
-/* Ensure hero section is a positioning context for absolute bubbles (Already in the previous block, keeping here for completeness) */
-.affiliate-hero {
-    position: relative;
-    overflow: hidden; 
-}
-.affiliate-hero .affiliate-container {
-    position: relative;
-    z-index: 1; /* Keep content above the bubbles */
 }
