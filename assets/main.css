@@ -739,45 +739,20 @@ a:hover {
     margin: 3rem auto 0;
     position: relative;
     padding: 30px;
-    /* FIX: Remove horizontal padding to let the lines go edge-to-edge relative to the text block */
-    padding-left: 0;
-    padding-right: 0;
-    
-    /* FIX: Stronger horizontal lines */
-    border-top: 3px solid var(--color-secondary-light); 
-    border-bottom: 3px solid var(--color-secondary-light);
+    border-top: 2px solid var(--color-secondary-light);
+    border-bottom: 2px solid var(--color-secondary-light);
 }
 .goal-quote-text {
     font-size: 1.5rem;
     font-style: italic;
     line-height: 1.5;
     color: var(--color-primary-dark);
-    /* FIX: Add internal padding to space text away from lines/quotes */
-    padding: 20px 0; 
 }
 
 /* Updated Quote Mark Styling */
-.open-quote, .close-quote {
-    font-size: 6rem; 
-    /* FIX: Using Primary Dark for subtle contrast */
-    color: rgba(107, 66, 38, 0.15); 
-    position: absolute;
-    line-height: 1;
-    z-index: 2; /* Ensure it floats clearly */
-    /* FIX: Reduce font weight slightly for a more delicate look */
-    font-weight: 300; 
-}
 
-.open-quote {
-    /* FIX: Push it slightly up and left so the quote mark sits perfectly ON the line */
-    top: -30px; 
-    left: -20px; 
-}
-.close-quote {
-    /* FIX: Mirror the adjustments for perfect symmetry */
-    bottom: -50px; 
-    right: -20px;
-}
+
+/* ... rest of the CSS continues ... */
 
 
 /* --- 8. WHY TRUST US? SECTION --- */
