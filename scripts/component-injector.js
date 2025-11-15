@@ -72,5 +72,18 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; 
         });
+
+        // --- NEW: Reviews Submenu Toggle Logic ---
+        const reviewsToggle = document.getElementById('reviews-toggle');
+        const reviewsParent = document.querySelector('.has-submenu');
+
+        if (reviewsToggle && reviewsParent) {
+            reviewsToggle.addEventListener('click', (e) => {
+                e.preventDefault(); // Stop navigation to '#'
+
+                // Toggle the 'active' class on the parent <li> element
+                reviewsParent.classList.toggle('active');
+            });
+        }
     }
 });
