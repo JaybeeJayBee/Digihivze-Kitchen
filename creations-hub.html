@@ -40,7 +40,7 @@
 
             <div class="recipe-categories-wrapper">
                 
-                <section class="recipe-carousel-section">
+                <section class="recipe-carousel-section" id="section-5-star">
                     <h2 class="section-title-hub">⭐ Five Stars Premium Recipes</h2>
                     <div class="horizontal-scroll-container">
                         <div class="product-card">
@@ -84,9 +84,10 @@
                             </div>
                         </div>
                     </div>
+                    <div class="carousel-indicator" data-target="section-5-star"></div>
                 </section>
                 
-                <section class="recipe-carousel-section">
+                <section class="recipe-carousel-section" id="section-3-star">
                     <h2 class="section-title-hub">★★★ Three Stars Recipes</h2>
                     <div class="horizontal-scroll-container">
                         <div class="product-card">
@@ -130,9 +131,10 @@
                             </div>
                         </div>
                     </div>
+                    <div class="carousel-indicator" data-target="section-3-star"></div>
                 </section>
                 
-                <section class="recipe-carousel-section">
+                <section class="recipe-carousel-section" id="section-1-star">
                     <h2 class="section-title-hub">★ One Star Recipes</h2>
                     <div class="horizontal-scroll-container">
                         <div class="product-card">
@@ -176,9 +178,10 @@
                             </div>
                         </div>
                     </div>
+                    <div class="carousel-indicator" data-target="section-1-star"></div>
                 </section>
 
-                <section class="recipe-carousel-section">
+                <section class="recipe-carousel-section" id="section-try-relate">
                     <h2 class="section-title-hub">🏡 Try and Relate Recipes</h2>
                     <div class="horizontal-scroll-container">
                         <div class="product-card">
@@ -222,6 +225,7 @@
                             </div>
                         </div>
                     </div>
+                    <div class="carousel-indicator" data-target="section-try-relate"></div>
                 </section>
             </div>
             </div>
@@ -230,5 +234,57 @@
     <div id="footer-placeholder"></div>
 
     <script src="scripts/component-injector.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.recipe-carousel-section');
+
+            sections.forEach(section => {
+                const scrollContainer = section.querySelector('.horizontal-scroll-container');
+                const indicatorContainer = section.querySelector('.carousel-indicator');
+                const cards = scrollContainer.querySelectorAll('.product-card');
+                const sectionId = section.id;
+                
+                if (!indicatorContainer) return;
+
+                // 1. Initialize Dots
+                cards.forEach((_, index) => {
+                    const dot = document.createElement('span');
+                    dot.classList.add('indicator-dot');
+                    if (index === 0) {
+                        dot.classList.add('active'); // First dot is active by default
+                    }
+                    indicatorContainer.appendChild(dot);
+                });
+
+                const dots = indicatorContainer.querySelectorAll('.indicator-dot');
+
+                // 2. Observer to track which card is currently visible
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting && entry.intersectionRatio >= 0.8) {
+                            const activeIndex = Array.from(cards).indexOf(entry.target);
+                            
+                            // Remove active class from all dots
+                            dots.forEach(dot => dot.classList.remove('active'));
+                            
+                            // Add active class to the current dot
+                            if (dots[activeIndex]) {
+                                dots[activeIndex].classList.add('active');
+                            }
+                        }
+                    });
+                }, {
+                    root: scrollContainer, // Check intersection relative to the scroll container
+                    threshold: 0.8, // Trigger when 80% of the card is visible
+                    rootMargin: "0px"
+                });
+
+                // Start observing all cards in this section
+                cards.forEach(card => {
+                    observer.observe(card);
+                });
+            });
+        });
+    </script>
 </body>
 </html>
