@@ -1851,12 +1851,15 @@ body {
 /* Note: Global styles like body, container, a, etc., are already handled by main.css */
 
 .policy-header-override {
-    /* Use the policy-header-override class to apply the gradient styling to the main page header */
     background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-secondary-light) 100%);
     color: var(--color-text-light);
-    padding: 4.5rem 0;
+    /* INCREASED PADDING for more vertical space */
+    padding: 6rem 0 5rem; 
     text-align: center;
     margin-bottom: 4rem;
+    /* ADDED FLOATING EFFECT (Box Shadow) */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); 
+    position: relative; /* Ensure shadow is correctly rendered */
 }
 
 /* Redefining header styles to be contained within the content block */
