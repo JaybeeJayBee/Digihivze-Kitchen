@@ -2242,3 +2242,64 @@ body {
         font-size: 1.6em;
     }
 }
+
+/* --- NEW STYLES FOR REVIEWS DROPDOWN SUBMENU --- */
+
+/* Parent item styling */
+.menu-list .has-submenu {
+    position: relative;
+    /* Reset list item margin for submenu structure */
+    margin: 1.0rem 0; 
+}
+
+/* Toggle link/button styling */
+.submenu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-right: 0; /* Remove padding if any */
+}
+
+.submenu-icon {
+    font-size: 0.8em; /* Smaller arrow icon */
+    margin-left: 10px;
+    transition: transform 0.3s ease;
+}
+
+/* Submenu container (Hidden by default) */
+.submenu {
+    list-style: none;
+    padding: 0;
+    /* Start hidden: set height to 0, use transition for smooth drop */
+    max-height: 0; 
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    margin-top: 10px;
+}
+
+/* Submenu items */
+.submenu li {
+    margin: 0.5rem 0;
+    text-align: center;
+}
+
+.submenu-item-text {
+    /* Style for non-clickable text item */
+    color: var(--color-secondary-light); /* Light brown/tan text */
+    font-size: 1.5rem; /* Smaller than main links */
+    opacity: 0.8;
+    font-weight: 300;
+    padding: 5px 0;
+    display: block;
+    cursor: default;
+}
+
+/* Active/Open state (Controlled by JS) */
+.has-submenu.active .submenu {
+    /* When active, set height high enough to show content */
+    max-height: 100px; 
+}
+
+.has-submenu.active .submenu-icon {
+    transform: rotate(180deg);
+}
