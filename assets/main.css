@@ -130,7 +130,7 @@ a:hover {
     pointer-events: none; 
 }
 
-/* --- 2B. NAVIGATION MENU (Overlay) - FINAL PERFECTED SIZE --- */
+/* --- 2B. NAVIGATION MENU (Overlay) - FINAL FIXES V7 (FORCED COMPRESSION, RESTORED) --- */
 .nav-overlay {
     position: fixed;
     top: 0;
@@ -194,20 +194,21 @@ a:hover {
     margin: 0; 
 }
 
-/* --- FINAL PERFECTED LINK STYLING --- */
+/* --- RESTORED FORCED STYLING ON MAIN LINK TEXT --- */
 .overlay-menu a {
     color: var(--color-text-light);
-    /* **FINAL SIZE: 0.9rem (Readable and Compact)** */
-    font-size: 0.9rem; 
+    /* EXTREME TEXT SIZE REDUCTION: 0.7rem, FORCED */
+    font-size: 0.7rem !important; 
     font-weight: 700; 
     display: inline-block;
-    /* Slightly increased vertical padding for better touch targets */
-    padding: 0.2rem 0; 
+    /* Minimized padding, FORCED */
+    padding: 0.1rem 0 !important; 
     letter-spacing: 2px; 
     text-transform: uppercase;
     position: relative;
     transition: color 0.3s, text-shadow 0.3s; 
-    line-height: 1.2; 
+    /* Line height, FORCED */
+    line-height: 1.0 !important; 
 }
 .overlay-menu a::after {
     display: none; 
@@ -221,18 +222,17 @@ a:hover {
     width: 0; 
 }
 
-/* --- Menu Divider Style (Refined Spacing) --- */
+/* --- Menu Divider Style (MAX COMPRESSION) --- */
 .menu-divider {
     border: none; 
     border-top: 1px solid rgba(255, 255, 255, 0.15); 
     width: 60%; 
-    /* Increased margin for better separation */
-    margin: 0.5rem auto; 
+    margin: 0.4rem auto; 
 }
 
 
 .overlay-tagline {
-    margin-top: 1.5rem; /* Better breathing room */
+    margin-top: 1.0rem; 
     color: var(--color-secondary-light);
     font-style: italic;
     font-size: 0.85rem; 
@@ -299,30 +299,43 @@ a:hover {
     }
 }
 
-/* FIX: Mobile Optimization (FINAL PERFECTED SIZE) */
+/* --- FIX: SUBMENU TEXT SIZE HIERARCHY --- */
+.submenu-item-text {
+    /* Base font size should be noticeably smaller than the main links (0.7rem) */
+    font-size: 0.6rem; 
+    font-weight: 300; /* Lighter weight for secondary info */
+    padding: 3px 0;
+    opacity: 0.7;
+}
+
+/* FIX: Mobile Optimization (HYPER COMPRESSION) */
 @media (max-height: 700px) and (max-width: 480px) {
     .close-btn {
         top: 10px; 
         right: 20px;
     }
     .nav-overlay {
-        padding-top: 30px; 
+        padding-top: 25px; 
     }
     .overlay-menu li {
         margin: 0; 
     }
     .overlay-menu a {
-        /* Mobile size: 0.8rem */
-        font-size: 0.8rem; 
-        line-height: 1.2; /* Resetting to standard tight line height */
-        padding: 0.2rem 0; 
+        /* Mobile size FORCED */
+        font-size: 0.65rem !important; 
+        line-height: 1.0 !important;
+        padding: 0.1rem 0 !important; 
     }
     .menu-divider {
-        margin: 0.4rem auto; 
+        margin: 0.2rem auto; 
     }
     .overlay-tagline {
-        margin-top: 0.5rem; 
-        font-size: 0.75rem;
+        margin-top: 0.2rem; 
+        font-size: 0.65rem;
+    }
+    /* FIX: Submenu text size on mobile */
+    .submenu-item-text {
+        font-size: 0.55rem;
     }
 }
 
