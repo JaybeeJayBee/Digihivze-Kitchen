@@ -213,8 +213,8 @@ a:hover {
 .overlay-menu a::after {
     display: none; 
 }
-/* **FIX APPLIED HERE:** The Home link selector a[href$="index.html"] is removed. */
-.overlay-menu a:hover { 
+.overlay-menu a:hover,
+.overlay-menu a.active-page { /* *** NEW: Apply glow to the current page link *** */
     color: var(--color-secondary-light);
     text-shadow: 0 0 10px var(--color-secondary-light); 
 }
