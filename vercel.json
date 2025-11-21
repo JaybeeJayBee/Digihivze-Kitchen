@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    { "source": "/affiliates", "destination": "/affiliates.html" },
+    { "source": "/contact", "destination": "/contact.html" },
+    { "source": "/creations-hub", "destination": "/creations-hub.html" },
+    { "source": "/faq", "destination": "/faq.html" },
+    { "source": "/policies", "destination": "/policies.html" },
+    
+    /* CATCH-ALL: This handles other clean URLs like /index and ensures future pages work */
+    { "source": "/:path", "destination": "/:path.html" }
+  ]
+}
